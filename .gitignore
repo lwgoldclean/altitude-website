@@ -1,0 +1,5 @@
+# Local Claude Code settings
+.claude/
+
+# Working copy of the redesign; the live site is served from the repo root
+new site/

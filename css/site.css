@@ -1,0 +1,60 @@
+/* ============================================================
+   Altitude Drone Exterior Cleaning — shared styles
+   Tailwind handles most styling; this file holds the few
+   things Tailwind utilities can't express inline.
+   ============================================================ */
+
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; }
+
+/* ---- Hero / CTA background -------------------------------
+   Gradient stand-in until real drone photography is supplied.
+   TODO: swap for a real photo, e.g.
+   background: linear-gradient(rgba(10,37,64,.6), rgba(10,37,64,.6)),
+               url('../images/hero.jpg') center/cover;
+   ---------------------------------------------------------- */
+.hero-bg {
+  background:
+    radial-gradient(1200px 500px at 75% -10%, rgba(42, 163, 232, .35), transparent 60%),
+    linear-gradient(180deg, #0a2540 0%, #0d3559 55%, #14486f 100%);
+}
+
+/* ---- Hero video backdrop ---------------------------------
+   The .hero-bg gradient sits underneath and shows through
+   while the video buffers, and stands in entirely if the
+   video fails to load or the visitor prefers reduced motion.
+   ---------------------------------------------------------- */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg,
+    rgba(10, 37, 64, .78) 0%,
+    rgba(10, 37, 64, .62) 45%,
+    rgba(10, 37, 64, .85) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video { display: none; }
+}
+
+/* Compact banner used at the top of inner pages */
+.page-banner {
+  background:
+    radial-gradient(900px 400px at 80% -30%, rgba(42, 163, 232, .35), transparent 60%),
+    linear-gradient(180deg, #0a2540 0%, #123f63 100%);
+}
+
+/* Soft placeholder block standing in for photography */
+.img-ph {
+  background: linear-gradient(135deg, #dde8f1 0%, #c9dcea 100%);
+}
