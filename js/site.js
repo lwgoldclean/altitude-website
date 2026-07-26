@@ -15,7 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
   );
 });
 
-/* Enquiry forms submit in the background so the visitor stays on the page. */
+/* Enquiry forms submit in the background so the visitor stays on the page.
+   The endpoint is the form's own action, which points at the Cloudflare Worker
+   in worker/ — that Worker holds the Resend key, which must never be in the
+   page source. Until it is deployed the action still reads REPLACE_WITH_...,
+   and the form says so rather than pretending to send. */
 function initQuoteForm(form) {
   var status = form.querySelector('[data-form-status]');
   var button = form.querySelector('button[type="submit"]');
@@ -36,8 +40,8 @@ function initQuoteForm(form) {
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    var key = form.querySelector('input[name="access_key"]').value;
-    if (!key || key.indexOf('REPLACE_WITH') === 0) {
+    var endpoint = form.getAttribute('action') || '';
+    if (endpoint.indexOf('REPLACE_WITH') !== -1) {
       show('This form is not yet connected. Please call 0432 008 830 and we will take your enquiry directly.', 'error');
       return;
     }
@@ -46,14 +50,14 @@ function initQuoteForm(form) {
     label.textContent = 'Submitting…';
     status.className = 'hidden';
 
-    fetch(form.action, {
+    fetch(endpoint, {
       method: 'POST',
       headers: { 'Accept': 'application/json' },
       body: new FormData(form)
     })
       .then(function (response) { return response.json(); })
       .then(function (result) {
-        if (result.success) {
+        if (result && result.success) {
           form.reset();
           show('Enquiry received. We will respond within two business days — sooner if you have flagged it as urgent.', 'ok');
         } else {

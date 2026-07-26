@@ -1,0 +1,20 @@
+name = "altitude-enquiry"
+main = "index.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+# Where enquiries land.
+TO_EMAIL = "goldcoastecocleaning@gmail.com"
+
+# Sender address. Resend requires the domain to be verified before it will send
+# from it — until altitudedroneexteriorcleaning.com is verified in Resend, use
+# "Altitude Website <onboarding@resend.dev>" to test.
+FROM_EMAIL = "Altitude Website <enquiries@altitudedroneexteriorcleaning.com>"
+
+# Only the live site may post to this Worker. Add http://localhost:8000 here
+# temporarily if you want to test the form from a local server.
+ALLOWED_ORIGIN = "https://altitudedroneexteriorcleaning.com"
+
+# RESEND_API_KEY is deliberately NOT in this file — it is a secret, and this
+# file is committed to a public repository. Set it with:
+#   npx wrangler secret put RESEND_API_KEY

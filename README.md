@@ -39,12 +39,40 @@ for visitors on mobile data.
 | `faq.html` | Redirect stub — keeps the old indexed URL alive |
 | `404.html` | Not-found page (GitHub Pages serves this automatically) |
 
-## Outstanding
+## The enquiry forms (Resend via a Cloudflare Worker)
 
-- **The enquiry forms do not send yet.** Both `index.html` and `contact.html`
-  contain `REPLACE_WITH_WEB3FORMS_ACCESS_KEY`. Get a free key at
-  [web3forms.com](https://web3forms.com) and paste it into both files. Until
-  then the form shows a message asking the visitor to phone instead.
+A static site cannot hold a Resend API key — anything in the page source is
+public, and a leaked key lets a stranger send email as your domain. So the form
+posts to a small Cloudflare Worker in `worker/`, which holds the key and calls
+Resend. It is free on Cloudflare's plan and is about 60 lines of code.
+
+**Deploy it once:**
+
+```bash
+cd worker
+npx wrangler login                      # opens your browser
+npx wrangler deploy                     # prints your Worker URL
+npx wrangler secret put RESEND_API_KEY  # paste your Resend key when prompted
+```
+
+Then take the URL wrangler prints — something like
+`https://altitude-enquiry.<your-subdomain>.workers.dev` — and paste it over
+`REPLACE_WITH_WORKER_URL.workers.dev` in the `<form action="...">` of both
+`index.html` and `contact.html`. Commit and push.
+
+**Sender address.** `worker/wrangler.toml` sets `FROM_EMAIL` to
+`enquiries@altitudedroneexteriorcleaning.com`. Resend will refuse to send from
+that until you verify the domain in the Resend dashboard (a few DNS records at
+your registrar). To test before verifying, temporarily change it to
+`Altitude Website <onboarding@resend.dev>`.
+
+Enquiries arrive as a formatted table, and the reply-to is set to the
+enquirer's address so replying in your mail client goes straight back to them.
+
+Until the Worker URL is pasted in, the form tells visitors to phone instead of
+failing silently.
+
+## Outstanding
 - Placeholders marked `TODO (William)` cover the ABN, insurance sums, CASA
   certificate details, aircraft specifications and past-project references.
   None of these were invented — each needs your real detail before publishing.

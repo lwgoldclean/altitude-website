@@ -131,15 +131,14 @@
         Most proposals issue within two business days.
       </p>
 
-      <!-- TODO (William): paste your Web3Forms access key into the value below.
-           Get one free in about a minute at https://web3forms.com — enter
-           goldcoastecocleaning@gmail.com, and they email you the key.
-           The key is safe to have in public code; your email address stays hidden.
-           Until the key is in place the form will show an error instead of sending. -->
-      <form class="mt-8 space-y-4" data-quote-form action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
+      <!-- TODO (William): replace the action URL below with your deployed Worker URL.
+           Deploy it from worker/ with:  npx wrangler deploy
+           then:                         npx wrangler secret put RESEND_API_KEY
+           Wrangler prints the URL (https://altitude-enquiry.<subdomain>.workers.dev).
+           Paste that same URL into index.html and contact.html.
+           Until then the form tells visitors to phone instead of failing silently. -->
+      <form class="mt-8 space-y-4" data-quote-form action="https://REPLACE_WITH_WORKER_URL.workers.dev" method="POST">
         <input type="hidden" name="subject" value="Proposal request — Altitude website (contact page)">
-        <input type="hidden" name="from_name" value="Altitude website">
         <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="grid sm:grid-cols-2 gap-4">
