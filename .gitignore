@@ -1,5 +1,9 @@
 # Local Claude Code settings
 .claude/
 
-# Working copy of the redesign; the live site is served from the repo root
+# Working copy of an earlier redesign; the live site is served from the repo root
 new site/
+
+# Build tooling — css/site.css is committed, the toolchain that builds it is not
+node_modules/
+package-lock.json

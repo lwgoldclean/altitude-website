@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Altitude Drone Services — bespoke styles
+   Everything Tailwind utilities can't express inline.
+   Compiled into css/site.css — edit this file, not that one.
+   ============================================================ */
+
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; }
+
+/* Corporate rather than consumer: tight, near-square radii. */
+.r-sm { border-radius: 3px; }
+.r-md { border-radius: 4px; }
+.r-lg { border-radius: 6px; }
+
+/* ---- Hero / CTA background -------------------------------
+   Deep navy wash. Sits under the hero video and stands in
+   entirely if the video is unavailable.
+   ---------------------------------------------------------- */
+.hero-bg {
+  background:
+    radial-gradient(1100px 480px at 78% -15%, rgba(42, 163, 232, .22), transparent 62%),
+    linear-gradient(180deg, #06182b 0%, #0a2540 55%, #0e3355 100%);
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Heavier than a consumer site would use: legibility and gravity
+   matter more here than showing off the footage. */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg,
+    rgba(6, 24, 43, .90) 0%,
+    rgba(10, 37, 64, .82) 45%,
+    rgba(6, 24, 43, .93) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video { display: none; }
+}
+
+/* ---- Enquiry panel --------------------------------------- */
+.quote-card {
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(3, 15, 28, .28);
+}
+
+.quote-input {
+  width: 100%;
+  padding: .62rem .8rem;
+  border: 1px solid #cfdae4;
+  border-radius: 4px;
+  background: #fff;
+  color: #0a2540;
+  font-family: inherit;
+  font-size: .92rem;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.quote-input::placeholder { color: #98a7b6; }
+
+.quote-input:focus {
+  outline: none;
+  border-color: #12608f;
+  box-shadow: 0 0 0 3px rgba(18, 96, 143, .15);
+}
+
+.quote-input:user-invalid { border-color: #c2543f; }
+
+select.quote-input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a2540' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .8rem center;
+  background-size: .9rem;
+  padding-right: 2.2rem;
+}
+
+textarea.quote-input { resize: vertical; min-height: 4.5rem; }
+
+/* ---- Inner page banner ----------------------------------- */
+.page-banner {
+  background:
+    radial-gradient(800px 380px at 82% -30%, rgba(42, 163, 232, .20), transparent 62%),
+    linear-gradient(180deg, #06182b 0%, #0a2540 100%);
+}
+
+/* ---- Photography placeholder ----------------------------- */
+.img-ph {
+  background: linear-gradient(135deg, #e4ebf2 0%, #cfdce8 100%);
+}
+
+/* ---- Hierarchy-of-controls diagram ----------------------- */
+.hoc-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .7rem 1rem;
+  border-left: 3px solid #cfdae4;
+  background: #fff;
+}
+
+.hoc-row--active {
+  border-left-color: #2aa3e8;
+  background: #0a2540;
+  color: #fff;
+}
+
+/* ---- Capability statement print styles -------------------
+   The statement page is written to be printed or saved to PDF
+   and attached to a tender response.
+   ---------------------------------------------------------- */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff !important; }
+  .print-plain {
+    box-shadow: none !important;
+    border-color: #ccc !important;
+  }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .75em; }
+  section { break-inside: avoid; }
+}

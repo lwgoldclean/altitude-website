@@ -1,0 +1,19 @@
+{
+  "name": "altitude-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Altitude Drone Exterior Cleaning — static site served by GitHub Pages",
+  "scripts": {
+    "build:css": "tailwindcss -i ./tailwind.src.css -o ./css/site.css --minify",
+    "watch:css": "tailwindcss -i ./tailwind.src.css -o ./css/site.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lwgoldclean/altitude-website.git"
+  },
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
