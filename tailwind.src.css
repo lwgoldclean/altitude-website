@@ -51,6 +51,18 @@ body { -webkit-font-smoothing: antialiased; }
   .hero-video { display: none; }
 }
 
+/* ---- Enquiry form disclosure (mobile) --------------------
+   The home page form is collapsed on phones so the credibility
+   content is reachable without scrolling past nine fields.
+   Above lg the <summary> is hidden and site.js forces it open,
+   so the desktop panel is unchanged.
+   ---------------------------------------------------------- */
+summary { list-style: none; }
+summary::-webkit-details-marker { display: none; }
+
+details[data-quote-disclosure][open]      .disclosure-closed { display: none; }
+details[data-quote-disclosure]:not([open]) .disclosure-open  { display: none; }
+
 /* ---- Enquiry panel --------------------------------------- */
 .quote-card {
   background: #fff;

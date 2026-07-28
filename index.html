@@ -109,7 +109,7 @@
   </script>
 </head>
 
-<body class="bg-white text-steel font-body">
+<body class="bg-white text-steel font-body pb-[68px] lg:pb-0">
 
 <!-- ═══════════════ HEADER ═══════════════ -->
 <header class="fixed top-0 inset-x-0 z-50 bg-white border-b border-line">
@@ -145,7 +145,11 @@
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
         Capability Statement
       </a>
-      <a href="contact.html" class="inline-flex items-center r-md bg-navy px-5 py-2.5 text-[14px] font-semibold text-white hover:bg-accent transition-colors">
+      <a href="tel:+61432008830" aria-label="Call 0432 008 830"
+         class="sm:hidden inline-flex items-center justify-center r-md bg-navy w-11 h-11 text-white hover:bg-accent transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"/></svg>
+      </a>
+      <a href="contact.html" class="hidden sm:inline-flex items-center r-md bg-navy px-5 py-2.5 text-[14px] font-semibold text-white hover:bg-accent transition-colors">
         Request a Proposal
       </a>
       <button data-menu-button aria-expanded="false" aria-label="Open menu" class="lg:hidden p-2 text-navy">
@@ -168,7 +172,7 @@
 </header>
 
 <!-- ═══════════════ HERO ═══════════════ -->
-<section class="hero-bg relative pt-28 pb-16 lg:pt-44 lg:pb-24 text-white overflow-hidden">
+<section class="hero-bg relative pt-24 pb-10 sm:pt-28 sm:pb-16 lg:pt-44 lg:pb-24 text-white overflow-hidden">
   <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
     <source src="videos/hero.mp4" type="video/mp4">
   </video>
@@ -183,48 +187,62 @@
       <h1 class="font-heading font-semibold text-[2.1rem] sm:text-5xl lg:text-[3.35rem] leading-[1.12] tracking-tight">
         Exterior cleaning without the scaffold, the shutdown or the downtime
       </h1>
-      <p class="mt-6 text-lg text-white/80 max-w-2xl leading-relaxed">
+      <p class="lg:hidden mt-5 text-[16.5px] text-white/80 leading-relaxed">
+        Facades, roofs, windows and solar cleaned by drone — at a fraction of the access
+        cost, with nobody working at height.
+      </p>
+      <p class="hidden lg:block mt-6 text-lg text-white/80 max-w-2xl leading-relaxed">
         Altitude cleans facades, roofs, windows and solar arrays by drone across commercial,
         strata and government property in South East Queensland. Works complete in a fraction
         of the time and at a fraction of the access cost — with nobody working at height.
       </p>
 
-      <dl class="mt-9 grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/15 border border-white/15">
-        <div class="bg-navy/40 backdrop-blur-sm px-4 py-4">
-          <dt class="font-heading font-semibold text-2xl text-white">No</dt>
+      <dl class="mt-7 sm:mt-9 grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/15 border border-white/15">
+        <div class="bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
+          <dt class="font-heading font-semibold text-xl sm:text-2xl text-white">No</dt>
           <dd class="text-[12.5px] text-white/65 mt-0.5 leading-snug">scaffold or EWP hire</dd>
         </div>
-        <div class="bg-navy/40 backdrop-blur-sm px-4 py-4">
-          <dt class="font-heading font-semibold text-2xl text-white">Days</dt>
+        <div class="bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
+          <dt class="font-heading font-semibold text-xl sm:text-2xl text-white">Days</dt>
           <dd class="text-[12.5px] text-white/65 mt-0.5 leading-snug">on site, not weeks</dd>
         </div>
-        <div class="bg-navy/40 backdrop-blur-sm px-4 py-4">
-          <dt class="font-heading font-semibold text-2xl text-white">Zero</dt>
+        <div class="bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
+          <dt class="font-heading font-semibold text-xl sm:text-2xl text-white">Zero</dt>
           <dd class="text-[12.5px] text-white/65 mt-0.5 leading-snug">personnel at height</dd>
         </div>
-        <div class="bg-navy/40 backdrop-blur-sm px-4 py-4">
-          <dt class="font-heading font-semibold text-2xl text-white">100%</dt>
+        <div class="bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
+          <dt class="font-heading font-semibold text-xl sm:text-2xl text-white">100%</dt>
           <dd class="text-[12.5px] text-white/65 mt-0.5 leading-snug">photo-documented</dd>
         </div>
       </dl>
 
-      <div class="mt-9 flex flex-wrap gap-3">
-        <a href="capability-statement.html" class="inline-flex items-center gap-2 r-md bg-white px-6 py-3 font-heading font-semibold text-navy hover:bg-mist transition-colors">
+      <div class="mt-7 sm:mt-9 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+        <a href="capability-statement.html" class="inline-flex items-center justify-center sm:justify-start gap-2 r-md bg-white px-6 py-3.5 sm:py-3 font-heading font-semibold text-navy hover:bg-mist transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
           Capability Statement
         </a>
-        <a href="services.html" class="inline-flex items-center r-md border border-white/40 px-6 py-3 font-heading font-semibold text-white hover:bg-white/10 transition-colors">
+        <a href="services.html" class="inline-flex items-center justify-center sm:justify-start r-md border border-white/40 px-6 py-3.5 sm:py-3 font-heading font-semibold text-white hover:bg-white/10 transition-colors">
           View Capability
         </a>
       </div>
     </div>
 
-    <!-- Enquiry panel -->
-    <div class="quote-card p-6 sm:p-7">
+    <!-- Enquiry panel.
+         On phones the nine fields below would push every proof point off the
+         first two screens, so the form is collapsed behind a disclosure and
+         re-opened from the sticky action bar. `open` is the markup default, so
+         with JavaScript unavailable the form simply stays visible. -->
+    <div id="quote" class="quote-card p-5 sm:p-7 scroll-mt-24">
       <h2 class="font-heading font-semibold text-lg text-navy">Request a proposal</h2>
       <p class="mt-1.5 text-sm text-steel">
         Scoped pricing and compliance documentation, typically within two business days.
       </p>
+
+      <details data-quote-disclosure open>
+        <summary class="lg:hidden mt-4 flex w-full cursor-pointer items-center justify-center gap-2 r-md bg-navy px-6 py-3.5 font-heading font-semibold text-white">
+          <span class="disclosure-closed">Open the enquiry form</span>
+          <span class="disclosure-open">Hide the enquiry form</span>
+        </summary>
 
       <!-- TODO (William): replace the action URL below with your deployed Worker URL.
            Deploy it from worker/ with:  npx wrangler deploy
@@ -317,7 +335,7 @@
           <textarea class="quote-input" id="q-detail" name="details" rows="2" placeholder="Building height, access constraints, required documentation"></textarea>
         </div>
 
-        <button type="submit" class="w-full r-md bg-navy px-6 py-3 font-heading font-semibold text-white hover:bg-accent transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+        <button type="submit" class="w-full r-md bg-navy px-6 py-3.5 sm:py-3 font-heading font-semibold text-white hover:bg-accent transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
           <span data-submit-label>Submit Request</span>
         </button>
 
@@ -328,6 +346,7 @@
           <a href="tel:+61432008830" class="text-accent font-semibold hover:underline">0432 008 830</a>
         </p>
       </form>
+      </details>
     </div>
 
   </div>
@@ -335,7 +354,7 @@
 
 <!-- ═══════════════ CREDENTIAL STRIP ═══════════════ -->
 <section class="bg-mist border-b border-line">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-wrap items-center justify-center gap-x-9 gap-y-3 text-[13.5px] font-medium text-navy">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 grid grid-cols-2 gap-x-4 gap-y-2.5 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-9 sm:gap-y-3 text-[12.5px] sm:text-[13.5px] font-medium text-navy">
     <span class="flex items-center gap-2">
       <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
       No access equipment required
@@ -356,20 +375,25 @@
 </section>
 
 <!-- ═══════════════ THE COMMERCIAL CASE ═══════════════ -->
-<section class="py-20 lg:py-24">
+<section class="py-12 sm:py-16 lg:py-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="grid lg:grid-cols-[1fr_400px] gap-14 lg:gap-16 items-center">
       <div>
         <p class="text-accent text-[13px] font-semibold tracking-[0.14em] uppercase mb-4">The commercial case</p>
-        <h2 class="font-heading font-semibold text-3xl lg:text-[2.5rem] leading-tight text-navy tracking-tight">
+        <h2 class="font-heading font-semibold max-sm:text-[1.6rem] text-3xl lg:text-[2.5rem] leading-tight text-navy tracking-tight">
           On most buildings, getting to the surface costs more than cleaning it
         </h2>
-        <p class="mt-6 text-lg leading-relaxed">
+        <p class="lg:hidden mt-5 text-[16.5px] leading-relaxed">
+          Scaffold, an EWP, a swing stage or a rope crew can cost more than the cleaning
+          itself. Drone delivery removes that line item entirely — and the car park stays
+          open.
+        </p>
+        <p class="hidden lg:block mt-6 text-lg leading-relaxed">
           Scaffold hire, an elevated work platform, a swing stage or a rope crew can account for
           more of the invoice than the work itself — before you count the lost car parking, the
           traffic management, the tenant complaints and the weeks the equipment sits on site.
         </p>
-        <p class="mt-5 leading-relaxed">
+        <p class="hidden lg:block mt-5 leading-relaxed">
           Drone delivery removes that entire line item. The crew arrives in a van, sets up on the
           ground, and the building is cleaned from the air. Most sites are finished in days rather
           than weeks, with the car park open and the tenants none the wiser.
@@ -382,28 +406,28 @@
     </div>
 
     <div class="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line">
-      <div class="bg-white p-7">
+      <div class="bg-white p-5 sm:p-7">
         <div class="w-9 h-9 r-md bg-accent/10 text-accent flex items-center justify-center mb-4">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8m-3-5h6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <h3 class="font-heading font-semibold text-navy">Lower total cost</h3>
         <p class="mt-2.5 text-[15px] leading-relaxed">No access equipment to hire, transport, erect, certify or dismantle. That saving comes off your quote, not ours.</p>
       </div>
-      <div class="bg-white p-7">
+      <div class="bg-white p-5 sm:p-7">
         <div class="w-9 h-9 r-md bg-accent/10 text-accent flex items-center justify-center mb-4">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"/></svg>
         </div>
         <h3 class="font-heading font-semibold text-navy">Days, not weeks</h3>
         <p class="mt-2.5 text-[15px] leading-relaxed">There is no mobilisation period. Work starts the morning we arrive and the site is clear when we leave.</p>
       </div>
-      <div class="bg-white p-7">
+      <div class="bg-white p-5 sm:p-7">
         <div class="w-9 h-9 r-md bg-accent/10 text-accent flex items-center justify-center mb-4">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l7-4 7 4v14M10 21v-6h4v6"/></svg>
         </div>
         <h3 class="font-heading font-semibold text-navy">Business as usual</h3>
         <p class="mt-2.5 text-[15px] leading-relaxed">No lost parking bays, no closed footpath, no obscured shopfront, no scaffold for tenants to look at for a month.</p>
       </div>
-      <div class="bg-white p-7">
+      <div class="bg-white p-5 sm:p-7">
         <div class="w-9 h-9 r-md bg-accent/10 text-accent flex items-center justify-center mb-4">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
         </div>
@@ -417,7 +441,7 @@
 </section>
 
 <!-- ═══════════════ ASSET PROTECTION ═══════════════ -->
-<section class="py-20 lg:py-24 bg-navy text-white">
+<section class="py-12 sm:py-16 lg:py-24 bg-navy text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-[400px_1fr] gap-14 lg:gap-16 items-center">
     <div class="border border-white/15 bg-white/5 p-4">
       <img src="images/solar.jpg" alt="Drone applying a purified-water rinse across a commercial solar array" class="w-full h-auto" width="447" height="447" loading="lazy" decoding="async">
@@ -425,10 +449,10 @@
 
     <div>
       <p class="text-sky text-[13px] font-semibold tracking-[0.14em] uppercase mb-4">Results</p>
-      <h2 class="font-heading font-semibold text-3xl lg:text-[2.5rem] leading-tight tracking-tight">
+      <h2 class="font-heading font-semibold max-sm:text-[1.6rem] text-3xl lg:text-[2.5rem] leading-tight tracking-tight">
         A better clean, and a gentler one
       </h2>
-      <p class="mt-6 text-lg text-white/75 leading-relaxed">
+      <p class="max-sm:mt-5 max-sm:text-[16.5px] mt-6 text-lg text-white/75 leading-relaxed">
         Cost and speed matter, but not if the result is poor or the building is damaged getting
         there. Soft washing is the method specifiers prefer for exactly that reason.
       </p>
@@ -455,56 +479,56 @@
 </section>
 
 <!-- ═══════════════ CAPABILITY ═══════════════ -->
-<section class="py-20 lg:py-24 bg-mist border-y border-line">
+<section class="py-12 sm:py-16 lg:py-24 bg-mist border-y border-line">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="max-w-3xl mb-12">
+    <div class="max-w-3xl mb-8 sm:mb-12">
       <p class="text-accent text-[13px] font-semibold tracking-[0.14em] uppercase mb-4">Capability</p>
-      <h2 class="font-heading font-semibold text-3xl lg:text-[2.5rem] leading-tight text-navy tracking-tight">
+      <h2 class="font-heading font-semibold max-sm:text-[1.6rem] text-3xl lg:text-[2.5rem] leading-tight text-navy tracking-tight">
         Scopes we deliver
       </h2>
-      <p class="mt-5 text-lg leading-relaxed">
+      <p class="max-sm:mt-4 max-sm:text-[16.5px] mt-5 text-lg leading-relaxed">
         Single assets through to multi-site portfolios, delivered as one-off works or under a
         scheduled maintenance program.
       </p>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-line border border-line">
-      <a href="services.html#facade" class="group bg-white p-7 hover:bg-navy transition-colors">
+      <a href="services.html#facade" class="group bg-white p-5 sm:p-7 hover:bg-navy transition-colors">
         <h3 class="font-heading font-semibold text-lg text-navy group-hover:text-white transition-colors">Facade &amp; cladding</h3>
         <p class="mt-3 text-[15px] leading-relaxed group-hover:text-white/75 transition-colors">
           Render, concrete, composite panel and painted surfaces. Low-pressure soft wash that
           lifts organic growth and salt without driving water into joints or stripping coatings.
         </p>
       </a>
-      <a href="services.html#roof" class="group bg-white p-7 hover:bg-navy transition-colors">
+      <a href="services.html#roof" class="group bg-white p-5 sm:p-7 hover:bg-navy transition-colors">
         <h3 class="font-heading font-semibold text-lg text-navy group-hover:text-white transition-colors">Roof &amp; gutter</h3>
         <p class="mt-3 text-[15px] leading-relaxed group-hover:text-white/75 transition-colors">
           Tile, metal and membrane roofs treated with no roof loading and no foot traffic —
           removing both the fall risk and the risk of trafficking damage to the sheet or membrane.
         </p>
       </a>
-      <a href="services.html#windows" class="group bg-white p-7 hover:bg-navy transition-colors">
+      <a href="services.html#windows" class="group bg-white p-5 sm:p-7 hover:bg-navy transition-colors">
         <h3 class="font-heading font-semibold text-lg text-navy group-hover:text-white transition-colors">Windows &amp; curtain wall</h3>
         <p class="mt-3 text-[15px] leading-relaxed group-hover:text-white/75 transition-colors">
           Purified-water cleaning of glazed elevations without swing stage mobilisation, rope
           crews, anchor point certification or footpath closure below.
         </p>
       </a>
-      <a href="services.html#solar" class="group bg-white p-7 hover:bg-navy transition-colors">
+      <a href="services.html#solar" class="group bg-white p-5 sm:p-7 hover:bg-navy transition-colors">
         <h3 class="font-heading font-semibold text-lg text-navy group-hover:text-white transition-colors">Solar arrays</h3>
         <p class="mt-3 text-[15px] leading-relaxed group-hover:text-white/75 transition-colors">
           Soiling losses recovered across commercial rooftop and ground-mount arrays, with no
           module loading and no personnel traversing the array.
         </p>
       </a>
-      <a href="services.html#industrial" class="group bg-white p-7 hover:bg-navy transition-colors">
+      <a href="services.html#industrial" class="group bg-white p-5 sm:p-7 hover:bg-navy transition-colors">
         <h3 class="font-heading font-semibold text-lg text-navy group-hover:text-white transition-colors">Industrial &amp; warehouse</h3>
         <p class="mt-3 text-[15px] leading-relaxed group-hover:text-white/75 transition-colors">
           Large-span roof sheeting and wall cladding covered in a single mobilisation, scheduled
           around operating hours and without a roof access permit.
         </p>
       </a>
-      <a href="services.html#programs" class="group bg-white p-7 hover:bg-navy transition-colors">
+      <a href="services.html#programs" class="group bg-white p-5 sm:p-7 hover:bg-navy transition-colors">
         <h3 class="font-heading font-semibold text-lg text-navy group-hover:text-white transition-colors">Scheduled programs</h3>
         <p class="mt-3 text-[15px] leading-relaxed group-hover:text-white/75 transition-colors">
           Recurring cyclical cleaning across a portfolio, with consolidated reporting and
@@ -516,11 +540,11 @@
 </section>
 
 <!-- ═══════════════ SECTORS ═══════════════ -->
-<section class="py-20 lg:py-24">
+<section class="py-12 sm:py-16 lg:py-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="max-w-3xl mb-12">
+    <div class="max-w-3xl mb-8 sm:mb-12">
       <p class="text-accent text-[13px] font-semibold tracking-[0.14em] uppercase mb-4">Sectors</p>
-      <h2 class="font-heading font-semibold text-3xl lg:text-[2.5rem] leading-tight text-navy tracking-tight">
+      <h2 class="font-heading font-semibold max-sm:text-[1.6rem] text-3xl lg:text-[2.5rem] leading-tight text-navy tracking-tight">
         Who we work for
       </h2>
     </div>
@@ -555,17 +579,20 @@
 </section>
 
 <!-- ═══════════════ DOCUMENTATION ═══════════════ -->
-<section class="py-20 lg:py-24 bg-navy text-white">
+<section class="py-12 sm:py-16 lg:py-24 bg-navy text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
     <div>
       <p class="text-sky text-[13px] font-semibold tracking-[0.14em] uppercase mb-4">Documentation</p>
-      <h2 class="font-heading font-semibold text-3xl lg:text-[2.5rem] leading-tight tracking-tight">
+      <h2 class="font-heading font-semibold max-sm:text-[1.6rem] text-3xl lg:text-[2.5rem] leading-tight tracking-tight">
         You see exactly what you paid for
       </h2>
-      <p class="mt-6 text-lg text-white/75 leading-relaxed">
-        Nobody should have to take a contractor's word for what happened six storeys up. Every
-        engagement is documented from mobilisation through to completion — useful for your own
-        records, and for anyone above you who needs to sign it off.
+      <p class="max-sm:mt-5 max-sm:text-[16.5px] mt-6 text-lg text-white/75 leading-relaxed">
+        <span class="lg:hidden">Nobody should have to take a contractor's word for what happened
+        six storeys up. Every engagement is documented start to finish.</span>
+        <span class="hidden lg:inline">Nobody should have to take a contractor's word for what
+        happened six storeys up. Every engagement is documented from mobilisation through to
+        completion — useful for your own records, and for anyone above you who needs to sign it
+        off.</span>
       </p>
       <ul class="mt-8 space-y-4 text-[15px]">
         <li class="flex gap-3.5">
@@ -588,7 +615,7 @@
     </div>
 
     <!-- IMAGE PLACEHOLDER: sample completion report / aerial condition capture -->
-    <div class="border border-white/15 min-h-[340px] lg:min-h-[420px] flex items-center justify-center bg-white/5">
+    <div class="border border-white/15 min-h-[190px] sm:min-h-[340px] lg:min-h-[420px] flex items-center justify-center bg-white/5">
       <div class="text-center text-white/40 px-8">
         <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h4M8 4h8a2 2 0 012 2v14a2 2 0 01-2 2H8a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
         <p class="text-sm font-medium">Sample completion report — replace with a real de-identified page</p>
@@ -598,32 +625,32 @@
 </section>
 
 <!-- ═══════════════ PROCESS ═══════════════ -->
-<section class="py-20 lg:py-24 bg-mist border-y border-line">
+<section class="py-12 sm:py-16 lg:py-24 bg-mist border-y border-line">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="max-w-3xl mb-12">
+    <div class="max-w-3xl mb-8 sm:mb-12">
       <p class="text-accent text-[13px] font-semibold tracking-[0.14em] uppercase mb-4">Engagement</p>
-      <h2 class="font-heading font-semibold text-3xl lg:text-[2.5rem] leading-tight text-navy tracking-tight">
+      <h2 class="font-heading font-semibold max-sm:text-[1.6rem] text-3xl lg:text-[2.5rem] leading-tight text-navy tracking-tight">
         How an engagement runs
       </h2>
     </div>
 
     <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line">
-      <li class="bg-white p-7">
+      <li class="bg-white p-5 sm:p-7">
         <span class="font-heading font-semibold text-accent text-sm">01</span>
         <h3 class="font-heading font-semibold text-navy mt-3">Scope &amp; assessment</h3>
         <p class="mt-2.5 text-[15px] leading-relaxed">Elevations, access constraints, airspace and surrounding sensitivities assessed. Most sites can be scoped from aerial imagery and drawings.</p>
       </li>
-      <li class="bg-white p-7">
+      <li class="bg-white p-5 sm:p-7">
         <span class="font-heading font-semibold text-accent text-sm">02</span>
         <h3 class="font-heading font-semibold text-navy mt-3">Proposal &amp; documentation</h3>
         <p class="mt-2.5 text-[15px] leading-relaxed">Fixed pricing with methodology, SWMS, insurance certificates and program — in a format that drops straight into a tender or committee pack.</p>
       </li>
-      <li class="bg-white p-7">
+      <li class="bg-white p-5 sm:p-7">
         <span class="font-heading font-semibold text-accent text-sm">03</span>
         <h3 class="font-heading font-semibold text-navy mt-3">Delivery</h3>
         <p class="mt-2.5 text-[15px] leading-relaxed">Pilot and spotter on site, ground exclusion zone established, stakeholders notified. Works scheduled around occupancy and trading hours.</p>
       </li>
-      <li class="bg-white p-7">
+      <li class="bg-white p-5 sm:p-7">
         <span class="font-heading font-semibold text-accent text-sm">04</span>
         <h3 class="font-heading font-semibold text-navy mt-3">Completion report</h3>
         <p class="mt-2.5 text-[15px] leading-relaxed">Photographic evidence per elevation, condition observations and sign-off, issued for your asset records.</p>
@@ -633,20 +660,21 @@
 </section>
 
 <!-- ═══════════════ CTA ═══════════════ -->
-<section class="hero-bg py-20 lg:py-24 text-white">
+<section class="hero-bg py-12 sm:py-16 lg:py-24 text-white">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-    <h2 class="font-heading font-semibold text-3xl lg:text-[2.5rem] tracking-tight">
+    <h2 class="font-heading font-semibold max-sm:text-[1.6rem] text-3xl lg:text-[2.5rem] tracking-tight">
       Discuss a site, a portfolio or a tender
     </h2>
-    <p class="mt-5 text-lg text-white/75 leading-relaxed">
-      We respond to formal RFQs and prequalification requests, and can provide compliance
-      documentation ahead of engagement.
+    <p class="max-sm:mt-4 max-sm:text-[16.5px] mt-5 text-lg text-white/75 leading-relaxed">
+      <span class="lg:hidden">We respond to formal RFQs and prequalification requests.</span>
+      <span class="hidden lg:inline">We respond to formal RFQs and prequalification requests, and
+      can provide compliance documentation ahead of engagement.</span>
     </p>
-    <div class="mt-9 flex flex-wrap justify-center gap-3">
-      <a href="contact.html" class="r-md bg-white px-7 py-3.5 font-heading font-semibold text-navy hover:bg-mist transition-colors">
+    <div class="mt-7 sm:mt-9 flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-3">
+      <a href="contact.html" class="r-md bg-white px-7 py-3.5 text-center font-heading font-semibold text-navy hover:bg-mist transition-colors">
         Request a Proposal
       </a>
-      <a href="tel:+61432008830" class="inline-flex items-center gap-2 r-md border border-white/40 px-7 py-3.5 font-heading font-semibold text-white hover:bg-white/10 transition-colors">
+      <a href="tel:+61432008830" class="inline-flex items-center justify-center gap-2 r-md border border-white/40 px-7 py-3.5 font-heading font-semibold text-white hover:bg-white/10 transition-colors">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"/></svg>
         0432 008 830
       </a>
@@ -705,6 +733,19 @@
     </div>
   </div>
 </footer>
+
+<!-- ═══════════════ MOBILE ACTION BAR ═══════════════ -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-line bg-white/95 backdrop-blur-sm">
+  <div class="grid grid-cols-2 gap-2 px-3 py-2.5">
+    <a href="tel:+61432008830" class="inline-flex items-center justify-center gap-2 r-md bg-navy py-3 font-heading font-semibold text-[15px] text-white">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"/></svg>
+      Call now
+    </a>
+    <a href="#quote" data-open-quote class="inline-flex items-center justify-center r-md border border-navy/30 bg-white py-3 font-heading font-semibold text-[15px] text-navy">
+      Get a proposal
+    </a>
+  </div>
+</div>
 
 <script src="js/site.js"></script>
 </body>

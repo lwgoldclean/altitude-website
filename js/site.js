@@ -13,7 +13,41 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-quote-form]'),
     initQuoteForm
   );
+
+  initQuoteDisclosure();
 });
+
+/* The enquiry form is collapsed on phones only. The markup ships with `open`
+   so that a visitor without JavaScript still gets a working form; this closes
+   it below the lg breakpoint and re-opens it if the viewport grows. */
+function initQuoteDisclosure() {
+  var panel = document.querySelector('[data-quote-disclosure]');
+  if (!panel) return;
+
+  var wide = window.matchMedia('(min-width: 1024px)');
+
+  function sync() {
+    panel.open = wide.matches;
+  }
+  sync();
+
+  if (wide.addEventListener) {
+    wide.addEventListener('change', sync);
+  } else if (wide.addListener) {
+    wide.addListener(sync);          // Safari < 14
+  }
+
+  // The sticky action bar points at the form; make sure tapping it reveals
+  // the fields rather than scrolling to a collapsed summary.
+  Array.prototype.forEach.call(
+    document.querySelectorAll('[data-open-quote]'),
+    function (trigger) {
+      trigger.addEventListener('click', function () {
+        panel.open = true;
+      });
+    }
+  );
+}
 
 /* Enquiry forms submit in the background so the visitor stays on the page.
    The endpoint is the form's own action, which points at the Cloudflare Worker
