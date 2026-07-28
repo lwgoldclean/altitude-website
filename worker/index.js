@@ -140,29 +140,123 @@ function asText(fields) {
   return `New enquiry from altitudedroneexteriorcleaning.com\n\n${lines.join('\n')}\n`;
 }
 
+/* Brand palette, matching tailwind.config.js. */
+const NAVY  = '#0a2540';
+const STEEL = '#4a5c6f';
+const SKY   = '#2aa3e8';
+const MIST  = '#f4f7fa';
+const LINE  = '#dde5ec';
+
+const FONT = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif';
+
+// Who they are, versus what they are asking for. Split so the reply-to
+// details sit at the top instead of buried in an alphabetical list.
+const ENQUIRY_KEYS = ['sector', 'scope', 'site_address', 'height', 'sites', 'stage', 'timing'];
+
+function val(fields, key) {
+  return String(fields[key] || '').trim();
+}
+
+/* Email clients drop <style> blocks and anything resembling modern layout, so
+   this is tables and inline styles throughout — verbose, but it survives. */
 function asHtml(fields) {
-  const rows = entries(fields)
-    .map(
-      ([label, value]) =>
-        `<tr>
-           <th align="left" style="padding:8px 16px 8px 0;vertical-align:top;color:#4a5c6f;font-weight:600;white-space:nowrap">${escape(label)}</th>
-           <td style="padding:8px 0;vertical-align:top;color:#0a2540">${escape(value).replace(/\n/g, '<br>')}</td>
-         </tr>`
-    )
+  const name  = val(fields, 'name');
+  const org   = val(fields, 'organisation');
+  const role  = val(fields, 'role');
+  const email = val(fields, 'email');
+  const phone = val(fields, 'phone');
+  const notes = val(fields, 'details');
+
+  const title    = org || name || 'New enquiry';
+  const subtitle = [name, role].filter(Boolean).join(' · ');
+
+  let stamp;
+  try {
+    stamp = new Date().toLocaleString('en-AU', {
+      timeZone: 'Australia/Brisbane',
+      dateStyle: 'full',
+      timeStyle: 'short',
+    });
+  } catch {
+    stamp = new Date().toISOString();   // if the runtime ships without full ICU
+  }
+
+  // Zebra striping: the detail list is scanned, not read.
+  let stripe = 0;
+  const detailRows = ENQUIRY_KEYS.filter((k) => val(fields, k))
+    .map((k) => {
+      const bg = stripe++ % 2 ? '#ffffff' : MIST;
+      return `<tr>
+        <td bgcolor="${bg}" style="background:${bg};padding:11px 18px;border-bottom:1px solid ${LINE};color:${STEEL};font-size:13px;font-weight:600;white-space:nowrap;vertical-align:top">${escape(LABELS[k])}</td>
+        <td bgcolor="${bg}" style="background:${bg};padding:11px 18px;border-bottom:1px solid ${LINE};color:${NAVY};font-size:15px;vertical-align:top">${escape(val(fields, k))}</td>
+      </tr>`;
+    })
     .join('');
 
-  return `<div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:640px">
-    <p style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#12608f;margin:0 0 4px">
-      Altitude — website enquiry
-    </p>
-    <h1 style="font-size:20px;color:#0a2540;margin:0 0 20px">
-      ${escape(fields.organisation || fields.name || 'New enquiry')}
-    </h1>
-    <table style="border-collapse:collapse;font-size:15px;line-height:1.5">${rows}</table>
-    <p style="margin-top:24px;font-size:13px;color:#4a5c6f">
-      Reply to this email to respond directly to the enquirer.
-    </p>
-  </div>`;
+  const contactLine = (label, value, href) => `<tr>
+    <td style="padding:2px 0;color:${STEEL};font-size:13px;white-space:nowrap">${escape(label)}&nbsp;&nbsp;</td>
+    <td style="padding:2px 0;font-size:16px;font-weight:600">
+      ${href
+        ? `<a href="${escape(href)}" style="color:${NAVY};text-decoration:none">${escape(value)}</a>`
+        : `<span style="color:${NAVY}">${escape(value)}</span>`}
+    </td>
+  </tr>`;
+
+  const contactRows = [
+    email ? contactLine('Email', email, 'mailto:' + email) : '',
+    phone ? contactLine('Phone', phone, 'tel:' + phone.replace(/[^\d+]/g, '')) : '',
+  ].join('');
+
+  return `<div style="margin:0;padding:0;background:${MIST}">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent">
+    ${escape([title, val(fields, 'scope'), val(fields, 'sector')].filter(Boolean).join(' — '))}
+  </div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${MIST}" style="background:${MIST};padding:28px 12px">
+    <tr><td align="center">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="640" style="width:100%;max-width:640px;background:#ffffff;border:1px solid ${LINE};border-radius:10px;overflow:hidden;font-family:${FONT}">
+
+        <tr><td bgcolor="${NAVY}" style="background:${NAVY};padding:26px 28px">
+          <p style="margin:0 0 8px;color:${SKY};font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">
+            Altitude &mdash; website enquiry
+          </p>
+          <h1 style="margin:0;color:#ffffff;font-size:23px;font-weight:600;line-height:1.25">${escape(title)}</h1>
+          ${subtitle ? `<p style="margin:7px 0 0;color:rgba(255,255,255,.72);font-size:14.5px">${escape(subtitle)}</p>` : ''}
+        </td></tr>
+
+        ${contactRows ? `<tr><td style="padding:22px 28px 4px">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0">${contactRows}</table>
+        </td></tr>` : ''}
+
+        ${detailRows ? `<tr><td style="padding:20px 28px 0">
+          <p style="margin:0 0 10px;color:${STEEL};font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase">Enquiry</p>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;border:1px solid ${LINE};border-radius:8px;border-collapse:separate;overflow:hidden">${detailRows}</table>
+        </td></tr>` : ''}
+
+        ${notes ? `<tr><td style="padding:20px 28px 0">
+          <p style="margin:0 0 10px;color:${STEEL};font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase">Notes</p>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr><td style="border-left:3px solid ${SKY};padding:2px 0 2px 14px;color:${NAVY};font-size:15px;line-height:1.6">${escape(notes).replace(/\n/g, '<br>')}</td></tr>
+          </table>
+        </td></tr>` : ''}
+
+        ${email ? `<tr><td style="padding:26px 28px 28px">
+          <a href="mailto:${escape(email)}" style="display:inline-block;background:${NAVY};color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;padding:13px 26px;border-radius:6px">
+            Reply to ${escape(name || 'enquirer')}
+          </a>
+        </td></tr>` : ''}
+
+        <tr><td bgcolor="${MIST}" style="background:${MIST};border-top:1px solid ${LINE};padding:16px 28px;color:${STEEL};font-size:12.5px;line-height:1.6">
+          Received ${escape(stamp)}.<br>
+          Replying to this email goes straight back to the enquirer.
+        </td></tr>
+
+      </table>
+      <p style="margin:16px 0 0;color:${STEEL};font-size:11.5px;font-family:${FONT}">
+        Sent by the enquiry form at altitudedroneexteriorcleaning.com
+      </p>
+    </td></tr>
+  </table>
+</div>`;
 }
 
 function escape(value) {
