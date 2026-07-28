@@ -73,6 +73,54 @@ body { -webkit-font-smoothing: antialiased; }
   .hero-video { display: none; }
 }
 
+/* ---- Hero stat tiles -------------------------------------
+   The four proof points are the pitch in miniature, so they get
+   more than flat type: a staggered reveal and a glass lift on
+   hover. Movement is progressive — .js is only present when the
+   document is scripted, so without JS the tiles render as before.
+   ---------------------------------------------------------- */
+.stat-card {
+  --stat-lift: 0px;
+  position: relative;
+  transform: translateY(var(--stat-lift));
+  transition:
+    transform .32s cubic-bezier(.2, .7, .3, 1),
+    opacity .5s ease,
+    background-color .32s ease,
+    box-shadow .32s ease;
+}
+
+/* Fixed-width numerals, so counting up does not jog the tile. */
+.stat-figure { font-variant-numeric: tabular-nums; }
+
+.js .stats-armed .stat-card              { opacity: 0; --stat-lift: 16px; }
+.js .stats-armed .stat-card.is-revealed  { opacity: 1; --stat-lift: 0px; }
+
+/* Given at both specificities: the first pair wins over the reveal
+   rules above, the second covers the unscripted document. */
+.js .stats-armed .stat-card.is-revealed:hover,
+.js .stats-armed .stat-card.is-revealed:focus-within,
+.stat-card:hover,
+.stat-card:focus-within {
+  --stat-lift: -4px;
+  z-index: 2;
+  background-color: rgba(13, 44, 74, .58);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow:
+    0 18px 38px -16px rgba(2, 12, 24, .85),
+    0 0 0 1px rgba(42, 163, 232, .38),
+    0 0 26px -8px rgba(42, 163, 232, .50);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .stats-armed .stat-card { opacity: 1; }
+  .stat-card {
+    --stat-lift: 0px !important;   /* keep the glass, drop the movement */
+    transition: background-color .32s ease, box-shadow .32s ease;
+  }
+}
+
 /* ---- Enquiry form disclosure (mobile) --------------------
    The home page form is collapsed on phones so the credibility
    content is reachable without scrolling past nine fields.

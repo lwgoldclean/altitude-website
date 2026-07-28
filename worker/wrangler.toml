@@ -4,7 +4,7 @@ compatibility_date = "2026-01-01"
 
 [vars]
 # Where enquiries land.
-TO_EMAIL = "goldcoastecocleaning@gmail.com"
+TO_EMAIL = "altitudedroneexteriorcleaning@gmail.com"
 
 # Sender address. Resend requires the domain to be verified before it will send
 # from it — until altitudedroneexteriorcleaning.com is verified in Resend, use

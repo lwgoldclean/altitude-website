@@ -30,6 +30,11 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
 
+  <!-- Marks the document as scripted before anything paints, so the hero stat
+       tiles can start hidden and be revealed by site.js. Without JS the class
+       is never set and they simply render in place. -->
+  <script>document.documentElement.className += ' js';</script>
+
   <!-- Structured data: helps search engines present the business correctly.
        TODO (William): once confirmed, add your ABN as an "identifier", and add
        "sameAs" URLs for any Google Business Profile, LinkedIn or Facebook page —
@@ -197,21 +202,21 @@
         of the time and at a fraction of the access cost — with nobody working at height.
       </p>
 
-      <dl class="mt-7 sm:mt-9 grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/15 border border-white/15">
-        <div class="bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
+      <dl class="stats-armed mt-7 sm:mt-9 grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/15 border border-white/15" data-stats>
+        <div class="stat-card bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
           <dt class="font-heading font-semibold text-xl sm:text-2xl text-white">No</dt>
           <dd class="text-[12.5px] text-white/65 mt-0.5 leading-snug">scaffold or EWP hire</dd>
         </div>
-        <div class="bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
+        <div class="stat-card bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
           <dt class="font-heading font-semibold text-xl sm:text-2xl text-white">Days</dt>
           <dd class="text-[12.5px] text-white/65 mt-0.5 leading-snug">on site, not weeks</dd>
         </div>
-        <div class="bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
+        <div class="stat-card bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
           <dt class="font-heading font-semibold text-xl sm:text-2xl text-white">Zero</dt>
           <dd class="text-[12.5px] text-white/65 mt-0.5 leading-snug">personnel at height</dd>
         </div>
-        <div class="bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
-          <dt class="font-heading font-semibold text-xl sm:text-2xl text-white">100%</dt>
+        <div class="stat-card bg-navy/40 backdrop-blur-sm px-4 py-3.5 sm:py-4">
+          <dt class="stat-figure font-heading font-semibold text-xl sm:text-2xl text-white" data-count-to="100" data-count-suffix="%">100%</dt>
           <dd class="text-[12.5px] text-white/65 mt-0.5 leading-snug">photo-documented</dd>
         </div>
       </dl>
@@ -250,7 +255,7 @@
            Wrangler prints the URL (https://altitude-enquiry.<subdomain>.workers.dev).
            Paste that same URL into index.html and contact.html.
            Until then the form tells visitors to phone instead of failing silently. -->
-      <form class="mt-5 space-y-3" data-quote-form action="https://REPLACE_WITH_WORKER_URL.workers.dev" method="POST">
+      <form class="mt-5 space-y-3" data-quote-form action="https://altitude-enquiry.lwgoldclean.workers.dev" method="POST">
         <input type="hidden" name="subject" value="Proposal request — Altitude website">
         <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
 

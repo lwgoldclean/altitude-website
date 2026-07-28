@@ -1,5 +1,9 @@
 /* Mobile navigation toggle. */
 document.addEventListener('DOMContentLoaded', function () {
+  // First: the stat tiles start hidden, so nothing further down this
+  // handler should be able to strand them that way.
+  initStatCards();
+
   var button = document.querySelector('[data-menu-button]');
   var panel  = document.querySelector('[data-menu-panel]');
   if (button && panel) {
@@ -17,6 +21,78 @@ document.addEventListener('DOMContentLoaded', function () {
   initQuoteDisclosure();
   initHeroVideo();
 });
+
+/* The four hero proof points carry the pitch, so they arrive in sequence
+   rather than as a block of flat type, and any figure among them counts up
+   to its value. The markup ships with .stats-armed so the tiles never flash
+   in before this runs; the .js class set in the head means an unscripted
+   document never hides them in the first place. */
+function initStatCards() {
+  var list = document.querySelector('[data-stats]');
+  if (!list) return;
+
+  var cards = list.querySelectorAll('.stat-card');
+  if (!cards.length) return;
+
+  var still = window.matchMedia
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function reveal() {
+    Array.prototype.forEach.call(cards, function (card, index) {
+      window.setTimeout(function () {
+        card.classList.add('is-revealed');
+        countUp(card.querySelector('[data-count-to]'), still);
+      }, still ? 0 : index * 110);
+    });
+  }
+
+  // The row sits in the hero, so this normally fires straight away; the
+  // observer is here so it still behaves if the page opens part-scrolled.
+  if (still || !('IntersectionObserver' in window)) {
+    reveal();
+    return;
+  }
+
+  var watcher = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (!entries[i].isIntersecting) continue;
+      watcher.disconnect();
+      reveal();
+      return;
+    }
+  }, { threshold: 0.35 });
+
+  watcher.observe(list);
+}
+
+/* Counts 0 → target, eased out so the number settles instead of stopping
+   dead on the last frame. */
+function countUp(figure, still) {
+  if (!figure) return;
+
+  var target = parseFloat(figure.getAttribute('data-count-to'));
+  var suffix = figure.getAttribute('data-count-suffix') || '';
+  if (isNaN(target)) return;
+
+  if (still || !window.requestAnimationFrame) {
+    figure.textContent = target + suffix;
+    return;
+  }
+
+  var duration = 1250;
+  var started  = null;
+
+  function frame(now) {
+    if (started === null) started = now;
+    var progress = Math.min((now - started) / duration, 1);
+    var eased    = 1 - Math.pow(1 - progress, 3);
+    figure.textContent = Math.round(target * eased) + suffix;
+    if (progress < 1) window.requestAnimationFrame(frame);
+  }
+
+  figure.textContent = '0' + suffix;
+  window.requestAnimationFrame(frame);
+}
 
 /* The hero video is decorative. Where autoplay is refused — iOS Low Power
    Mode, Android Data Saver — the browser is left showing a frozen first
