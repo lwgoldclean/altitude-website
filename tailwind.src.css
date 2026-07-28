@@ -33,18 +33,40 @@ body { -webkit-font-smoothing: antialiased; }
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  /* Mirrored so the drone sits on the left, clear of the enquiry panel. */
+  transform: scaleX(-1);
+  /* Puts back the colour the navy scrim above takes out. */
+  filter: saturate(1.15) contrast(1.04);
 }
 
-/* Heavier than a consumer site would use: legibility and gravity
-   matter more here than showing off the footage. */
+/* Light, near-flat navy scrim: enough to hold white type, not so much
+   that the footage reads as a grey still. Kept close to even top to
+   bottom so it doesn't vignette. */
 .hero-video-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(180deg,
-    rgba(6, 24, 43, .90) 0%,
-    rgba(10, 37, 64, .82) 45%,
-    rgba(6, 24, 43, .93) 100%);
+    rgba(6, 24, 43, .50) 0%,
+    rgba(10, 37, 64, .44) 45%,
+    rgba(6, 24, 43, .52) 100%);
+}
+
+/* iOS paints a large start-playback button over any video that has not begun
+   playing, and Low Power Mode blocks autoplay outright. The hero footage is
+   decorative, so the control must never show — site.js removes the video
+   itself when playback is genuinely refused. */
+.hero-video::-webkit-media-controls,
+.hero-video::-webkit-media-controls-enclosure,
+.hero-video::-webkit-media-controls-panel,
+.hero-video::-webkit-media-controls-play-button,
+.hero-video::-webkit-media-controls-overlay-play-button,
+.hero-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+  appearance: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -15,7 +15,30 @@ document.addEventListener('DOMContentLoaded', function () {
   );
 
   initQuoteDisclosure();
+  initHeroVideo();
 });
+
+/* The hero video is decorative. Where autoplay is refused — iOS Low Power
+   Mode, Android Data Saver — the browser is left showing a frozen first
+   frame under its own play button, which reads as broken. Rather than leave
+   that, drop the element and let the navy .hero-bg gradient stand in, which
+   is what it is there for. */
+function initHeroVideo() {
+  var video = document.querySelector('.hero-video');
+  if (!video) return;
+
+  // iOS honours the muted *property*; the attribute alone is not always
+  // enough for an unattended play() to be permitted.
+  video.muted = true;
+  video.setAttribute('muted', '');
+
+  var started = video.play();
+  if (!started || typeof started.catch !== 'function') return;   // older browsers
+
+  started.catch(function () {
+    video.parentNode && video.parentNode.removeChild(video);
+  });
+}
 
 /* The enquiry form is collapsed on phones only. The markup ships with `open`
    so that a visitor without JavaScript still gets a working form; this closes
