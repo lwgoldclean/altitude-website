@@ -192,7 +192,7 @@ function initQuoteForm(form) {
       .then(function (result) {
         if (result && result.success) {
           form.reset();
-          show('Enquiry received. We will respond within two business days — sooner if you have flagged it as urgent.', 'ok');
+          show('Enquiry received — thank you. We will be in touch shortly.', 'ok');
         } else {
           show('That did not send. Please call 0432 008 830 and we will take the details directly.', 'error');
         }

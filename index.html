@@ -240,7 +240,8 @@
     <div id="quote" class="quote-card p-5 sm:p-7 scroll-mt-24">
       <h2 class="font-heading font-semibold text-lg text-navy">Request a proposal</h2>
       <p class="mt-1.5 text-sm text-steel">
-        Scoped pricing and compliance documentation, typically within two business days.
+        Scoped pricing and compliance documentation. Only your name and email are
+        required — anything else you add helps us scope it faster.
       </p>
 
       <details data-quote-disclosure open>
@@ -249,12 +250,6 @@
           <span class="disclosure-open">Hide the enquiry form</span>
         </summary>
 
-      <!-- TODO (William): replace the action URL below with your deployed Worker URL.
-           Deploy it from worker/ with:  npx wrangler deploy
-           then:                         npx wrangler secret put RESEND_API_KEY
-           Wrangler prints the URL (https://altitude-enquiry.<subdomain>.workers.dev).
-           Paste that same URL into index.html and contact.html.
-           Until then the form tells visitors to phone instead of failing silently. -->
       <form class="mt-5 space-y-3" data-quote-form action="https://altitude-enquiry.lwgoldclean.workers.dev" method="POST">
         <input type="hidden" name="subject" value="Proposal request — Altitude website">
         <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
@@ -262,7 +257,7 @@
         <div class="grid sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="q-org">Organisation</label>
-            <input class="quote-input" type="text" id="q-org" name="organisation" required autocomplete="organization">
+            <input class="quote-input" type="text" id="q-org" name="organisation" autocomplete="organization">
           </div>
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="q-name">Contact name</label>
@@ -273,19 +268,19 @@
         <div class="grid sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="q-email">Email</label>
-            <input class="quote-input" type="email" id="q-email" name="email" required autocomplete="email">
+            <input class="quote-input" type="text" inputmode="email" id="q-email" name="email" required autocomplete="email">
           </div>
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="q-phone">Phone</label>
-            <input class="quote-input" type="tel" id="q-phone" name="phone" required autocomplete="tel">
+            <input class="quote-input" type="tel" id="q-phone" name="phone" autocomplete="tel">
           </div>
         </div>
 
         <div class="grid sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="q-sector">Sector</label>
-            <select class="quote-input" id="q-sector" name="sector" required>
-              <option value="" disabled selected>Select</option>
+            <select class="quote-input" id="q-sector" name="sector">
+              <option value="" selected>Select</option>
               <option>Local or state government</option>
               <option>Education</option>
               <option>Health &amp; aged care</option>
@@ -298,8 +293,8 @@
           </div>
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="q-scope">Scope</label>
-            <select class="quote-input" id="q-scope" name="scope" required>
-              <option value="" disabled selected>Select</option>
+            <select class="quote-input" id="q-scope" name="scope">
+              <option value="" selected>Select</option>
               <option>Facade &amp; cladding</option>
               <option>Roof &amp; gutter</option>
               <option>Windows &amp; curtain wall</option>
@@ -313,8 +308,8 @@
         <div class="grid sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="q-sites">Sites</label>
-            <select class="quote-input" id="q-sites" name="sites" required>
-              <option value="" disabled selected>Select</option>
+            <select class="quote-input" id="q-sites" name="sites">
+              <option value="" selected>Select</option>
               <option>Single site</option>
               <option>2–5 sites</option>
               <option>6–20 sites</option>
@@ -323,8 +318,8 @@
           </div>
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="q-stage">Stage</label>
-            <select class="quote-input" id="q-stage" name="stage" required>
-              <option value="" disabled selected>Select</option>
+            <select class="quote-input" id="q-stage" name="stage">
+              <option value="" selected>Select</option>
               <option>Budget pricing only</option>
               <option>Ready to engage</option>
               <option>Formal tender / RFQ</option>
@@ -335,7 +330,7 @@
 
         <div>
           <label class="block text-[13px] font-medium text-navy mb-1" for="q-detail">
-            Scope notes <span class="font-normal text-steel/60">(optional)</span>
+            Scope notes
           </label>
           <textarea class="quote-input" id="q-detail" name="details" rows="2" placeholder="Building height, access constraints, required documentation"></textarea>
         </div>

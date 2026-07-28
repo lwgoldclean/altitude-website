@@ -10,7 +10,10 @@
  * Secret:  npx wrangler secret put RESEND_API_KEY
  */
 
-const REQUIRED = ['name', 'email', 'phone'];
+/* Deliberately minimal. Every additional mandatory field costs enquiries, and
+   a name and a reply address are all that is needed to respond — the rest of
+   the form is there for people who want to give it. */
+const REQUIRED = ['name', 'email'];
 
 export default {
   async fetch(request, env) {

@@ -133,16 +133,11 @@
     <div id="quote" class="border border-line p-5 sm:p-9 scroll-mt-24">
       <h2 class="font-heading font-semibold text-2xl text-navy tracking-tight">Enquiry details</h2>
       <p class="mt-2.5 leading-relaxed">
-        The more you can tell us here, the closer the first response will be to a usable number.
-        Most proposals issue within two business days.
+        The more you can tell us here, the closer the first response will be to a usable
+        number. Only your name and email are required — fill in as much of the rest as
+        you find useful.
       </p>
 
-      <!-- TODO (William): replace the action URL below with your deployed Worker URL.
-           Deploy it from worker/ with:  npx wrangler deploy
-           then:                         npx wrangler secret put RESEND_API_KEY
-           Wrangler prints the URL (https://altitude-enquiry.<subdomain>.workers.dev).
-           Paste that same URL into index.html and contact.html.
-           Until then the form tells visitors to phone instead of failing silently. -->
       <form class="mt-8 space-y-4" data-quote-form action="https://altitude-enquiry.lwgoldclean.workers.dev" method="POST">
         <input type="hidden" name="subject" value="Proposal request — Altitude website (contact page)">
         <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
@@ -150,7 +145,7 @@
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="c-org">Organisation</label>
-            <input class="quote-input" type="text" id="c-org" name="organisation" required autocomplete="organization">
+            <input class="quote-input" type="text" id="c-org" name="organisation" autocomplete="organization">
           </div>
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="c-name">Contact name</label>
@@ -165,8 +160,8 @@
           </div>
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="c-sector">Sector</label>
-            <select class="quote-input" id="c-sector" name="sector" required>
-              <option value="" disabled selected>Select</option>
+            <select class="quote-input" id="c-sector" name="sector">
+              <option value="" selected>Select</option>
               <option>Local or state government</option>
               <option>Education</option>
               <option>Health &amp; aged care</option>
@@ -182,24 +177,24 @@
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="c-email">Email</label>
-            <input class="quote-input" type="email" id="c-email" name="email" required autocomplete="email">
+            <input class="quote-input" type="text" inputmode="email" id="c-email" name="email" required autocomplete="email">
           </div>
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="c-phone">Phone</label>
-            <input class="quote-input" type="tel" id="c-phone" name="phone" required autocomplete="tel">
+            <input class="quote-input" type="tel" id="c-phone" name="phone" autocomplete="tel">
           </div>
         </div>
 
         <div>
           <label class="block text-[13px] font-medium text-navy mb-1" for="c-address">Site address or locality</label>
-          <input class="quote-input" type="text" id="c-address" name="site_address" required placeholder="Street address, or suburb if multiple sites">
+          <input class="quote-input" type="text" id="c-address" name="site_address" placeholder="Street address, or suburb if multiple sites">
         </div>
 
         <div class="grid sm:grid-cols-3 gap-4">
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="c-scope">Scope</label>
-            <select class="quote-input" id="c-scope" name="scope" required>
-              <option value="" disabled selected>Select</option>
+            <select class="quote-input" id="c-scope" name="scope">
+              <option value="" selected>Select</option>
               <option>Facade &amp; cladding</option>
               <option>Roof &amp; gutter</option>
               <option>Windows &amp; curtain wall</option>
@@ -211,8 +206,8 @@
           </div>
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="c-height">Building height</label>
-            <select class="quote-input" id="c-height" name="height" required>
-              <option value="" disabled selected>Select</option>
+            <select class="quote-input" id="c-height" name="height">
+              <option value="" selected>Select</option>
               <option>Single storey</option>
               <option>2–3 storeys</option>
               <option>4–8 storeys</option>
@@ -222,8 +217,8 @@
           </div>
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="c-sites">Sites</label>
-            <select class="quote-input" id="c-sites" name="sites" required>
-              <option value="" disabled selected>Select</option>
+            <select class="quote-input" id="c-sites" name="sites">
+              <option value="" selected>Select</option>
               <option>Single site</option>
               <option>2–5 sites</option>
               <option>6–20 sites</option>
@@ -235,8 +230,8 @@
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="c-stage">Procurement stage</label>
-            <select class="quote-input" id="c-stage" name="stage" required>
-              <option value="" disabled selected>Select</option>
+            <select class="quote-input" id="c-stage" name="stage">
+              <option value="" selected>Select</option>
               <option>Budget pricing only</option>
               <option>Ready to engage</option>
               <option>Formal tender / RFQ</option>
@@ -245,8 +240,8 @@
           </div>
           <div>
             <label class="block text-[13px] font-medium text-navy mb-1" for="c-timing">Required timing</label>
-            <select class="quote-input" id="c-timing" name="timing" required>
-              <option value="" disabled selected>Select</option>
+            <select class="quote-input" id="c-timing" name="timing">
+              <option value="" selected>Select</option>
               <option>Urgent — within 2 weeks</option>
               <option>Within 1–2 months</option>
               <option>This financial year</option>
