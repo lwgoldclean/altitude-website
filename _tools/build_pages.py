@@ -64,6 +64,12 @@ def build(slug, p):
     for k in ("og:description", "twitter:description"):
         attr = "property" if k.startswith("og") else "name"
         head = re.sub(rf'(<meta {attr}="{k}" content=")[^"]*', lambda m: m.group(1) + d, head)
+    # Share card from _tools/build_og.py
+    og = f"{BASE}images/og/{slug[:-5]}.jpg"
+    for k in ("og:image", "twitter:image"):
+        attr = "property" if k.startswith("og") else "name"
+        head = re.sub(rf'(<meta {attr}="{k}" content=")[^"]*', lambda m: m.group(1) + og, head)
+    head = re.sub(r'(<meta property="og:image:alt" content=")[^"]*', lambda m: m.group(1) + plain(p["h1"]), head)
 
     schema = [
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
