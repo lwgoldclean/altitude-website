@@ -20,10 +20,6 @@ body_start = tpl.index("</head>")
 header_html = tpl[body_start:tpl.index("<!-- ═══════════════ BANNER")]
 footer_html = tpl[tpl.index("<!-- ═══════════════ FOOTER"):]
 
-SUBURBS = ["Surfers Paradise", "Broadbeach", "Main Beach", "Southport", "Labrador",
-           "Runaway Bay", "Hope Island", "Coomera", "Helensvale", "Nerang", "Robina",
-           "Varsity Lakes", "Burleigh Heads", "Palm Beach", "Coolangatta", "Mermaid Beach"]
-
 PAGES = {}
 
 def li(items, mark="—", cls="text-accent font-semibold"):
@@ -120,10 +116,9 @@ def build(slug, p):
 '''
 
     conv, drone = p["compare"]
-    suburbs = "\n".join(f'          <li>{s}</li>' for s in p.get("suburbs", SUBURBS))
-    suburbs_h3 = p.get("suburbs_h3", "Gold Coast suburbs we service")
-    also = p.get("also", "We also deliver across Brisbane, Logan, Ipswich, the Scenic Rim and Northern New South\n"
-                         "        Wales, with the Sunshine Coast by arrangement.")
+    suburbs = "\n".join(f'          <li>{s}</li>' for s in p["suburbs"])
+    suburbs_h3 = p["suburbs_h3"]
+    also = p["also"]
     related_h2 = p.get("related_h2", "Other drone cleaning services on the Gold Coast")
     related = "\n".join(f'''      <a href="{href}" class="group bg-white p-5 sm:p-7 hover:bg-navy transition-colors">
         <h3 class="font-heading font-semibold text-lg text-navy group-hover:text-white transition-colors">{name}</h3>
@@ -202,10 +197,7 @@ def build(slug, p):
 {faq_html(p["faqs"])}
     </div>
     <p class="mt-8 text-[15px] leading-relaxed">
-      More detail on scoping, documentation and delivery is on our
-      <a href="how-it-works.html" class="text-accent font-semibold hover:underline">process page</a>, and our
-      insurance and safety documentation is outlined on the
-      <a href="compliance.html" class="text-accent font-semibold hover:underline">compliance page</a>.
+      {p["more"]}
     </p>
   </div>
 </section>
@@ -228,8 +220,7 @@ def build(slug, p):
       {p["cta_h2"]}
     </h2>
     <p class="max-sm:mt-4 max-sm:text-[16.5px] mt-5 text-lg text-white/75 leading-relaxed">
-      Most sites can be scoped and priced from aerial imagery and drawings, without an attendance
-      fee or a sales visit.
+      {p["cta_p"]}
     </p>
     <div class="mt-9 flex flex-wrap justify-center gap-3">
       <a href="contact.html" class="r-md bg-white px-7 py-3.5 font-heading font-semibold text-navy hover:bg-mist transition-colors">
@@ -259,23 +250,14 @@ RELATED = [
      "Commercial rooftop, ground-mount and carport arrays cleaned with purified water and no module loading."),
 ]
 
-OCCUPIED_Q = ("Can you work while the building is occupied or trading?",
-              "Yes. There is no scaffold erection period, no elevated work platform occupying car parking or "
-              "footpath, and no loss of trading frontage. We establish a modest ground exclusion zone that "
-              "moves with the work, and schedule around peak occupancy or trading hours.")
-AIRSPACE_Q = ("Can you fly anywhere on the Gold Coast?",
-              "Not always without approval. Parts of the southern Gold Coast sit within controlled airspace "
-              "around Gold Coast Airport, and some sites are close to hospital helipads. These can require "
-              "authorisation or occasionally rule the method out. We assess airspace at scoping, before you "
-              "commit to anything.")
-WEATHER_Q = ("What happens if the weather turns?",
-             "Wind, rain and visibility limits are set before each flight. If conditions fall outside them we "
-             "reschedule at no cost, and we will not attempt a partial job to hold a booking.")
-DOCS_Q = ("What documentation do we receive?",
-          "Before works: a site-specific SWMS, risk assessment, insurance certificates of currency and Safety "
-          "Data Sheets. After works: a photographic completion report per elevation with condition observations.")
-
 GROUND_CREW = "Two-person crew working from ground level"
+
+# Each page has its own FAQs, suburb list and closing copy so the pages don't
+# repeat each other. Keep it that way when adding pages.
+LINK = '<a href="{}" class="text-accent font-semibold hover:underline">{}</a>'
+PROC = LINK.format("how-it-works.html", "process page")
+COMP = LINK.format("compliance.html", "compliance page")
+BNE = LINK.format("drone-cleaning-brisbane.html", "Brisbane, Logan and Ipswich")
 
 PAGES["drone-building-washing-gold-coast.html"] = dict(
     title="Drone Building Washing Gold Coast | Facade Soft Wash | Altitude",
@@ -339,9 +321,30 @@ PAGES["drone-building-washing-gold-coast.html"] = dict(
          "Soft washing is low pressure by design. The chemistry lifts organic growth and salt rather than "
          "blasting the surface, so water is not driven into control joints, seals or cladding cavities and "
          "coatings are not stripped."),
-        OCCUPIED_Q, AIRSPACE_Q, DOCS_Q,
+        ("Can you wash the facade while tenants are trading?",
+         "Yes. Nothing is erected against the building, so shopfronts stay open, car parks stay usable and "
+         "there is no scaffold period to plan around. A small ground exclusion zone follows the drone, and "
+         "elevations are sequenced around your busiest trading hours."),
+        ("Where does the wash water go?",
+         "We wet down and rinse garden beds and sensitive plantings around the work, and use soft-wash "
+         "products chosen for low environmental persistence. If the site drains straight to stormwater, "
+         "containment is agreed in the scope before any washing starts."),
+        ("Can every building be washed by drone?",
+         "Most multi-storey facades can, but not all. Sites near Gold Coast Airport or a hospital helipad may "
+         "need airspace authorisation, and heavy staining, graffiti or coating removal needs a different "
+         "trade. We tell you at scoping rather than mobilise to a job the method does not suit."),
     ],
     cta_h2="Send us your building",
+    cta_p="Send the address and any drawings you have. Most facades can be measured and priced from aerial "
+          "imagery, with no attendance fee or sales visit.",
+    more=f"Our {PROC} explains how scoping, documentation and delivery run, and the {COMP} covers "
+         "insurance, SWMS and environmental controls.",
+    suburbs_h3="Where we wash buildings on the Gold Coast",
+    suburbs=["Southport", "Bundall", "Surfers Paradise", "Broadbeach", "Robina", "Varsity Lakes",
+             "Burleigh Heads", "Palm Beach", "Coolangatta", "Nerang", "Carrara", "Helensvale",
+             "Coomera", "Hope Island", "Runaway Bay", "Labrador"],
+    also=f"Beyond the Gold Coast we wash buildings across {BNE}, the Scenic Rim and Northern New South "
+         "Wales, with the Sunshine Coast by arrangement.",
 )
 
 PAGES["drone-window-cleaning-gold-coast.html"] = dict(
@@ -400,9 +403,29 @@ PAGES["drone-window-cleaning-gold-coast.html"] = dict(
          "For salt film, dust and atmospheric soiling, purified-water cleaning gives a spot-free finish. Heavy "
          "mechanical staining, graffiti or coating removal is not suited to the method, and we will tell you so "
          "at scoping rather than mobilise to a job we cannot finish properly."),
-        OCCUPIED_Q, WEATHER_Q, AIRSPACE_Q,
+        ("Do occupants need to do anything while the glass is cleaned?",
+         "Only keep windows and sliding doors closed on the elevation being cleaned. Building management gets "
+         "notice for each elevation in advance, and nobody is suspended outside the glass at any point."),
+        ("Does wind affect cleaning on tall buildings?",
+         "Yes. Wind is stronger at height and along the beachfront, so wind limits are set for each site "
+         "before flying and checked on the day. If conditions exceed them we reschedule at no cost rather "
+         "than leave an elevation half done."),
+        ("Do you need airspace approval to clean a tower?",
+         "Sometimes. Proximity to Gold Coast Airport, hospital helipads and low-level helicopter traffic along "
+         "the coastline is checked for every tower at scoping, and any authorisation is arranged before works "
+         "are booked."),
     ],
     cta_h2="Send us your elevations",
+    cta_p="Send the address and the elevations you want cleaned. Glazed areas can usually be measured from "
+          "aerial imagery and drawings, so there is no sales visit to book.",
+    more=f"See how an engagement runs on our {PROC}, and the insurance and safety documents we supply on "
+         f"the {COMP}.",
+    suburbs_h3="High-rise areas we service",
+    suburbs=["Surfers Paradise", "Broadbeach", "Main Beach", "Southport", "Labrador", "Biggera Waters",
+             "Mermaid Beach", "Miami", "Burleigh Heads", "Palm Beach", "Coolangatta", "Robina",
+             "Varsity Lakes", "Hope Island", "Paradise Point", "Runaway Bay"],
+    also=f"Glazed buildings in {BNE} are covered from the same base, along with the Scenic Rim and "
+         "Northern New South Wales. Sunshine Coast work is by arrangement.",
 )
 
 PAGES["drone-roof-cleaning-gold-coast.html"] = dict(
@@ -475,9 +498,26 @@ PAGES["drone-roof-cleaning-gold-coast.html"] = dict(
         ("Does soft washing just remove the stain, or the growth?",
          "Soft washing treats the biological growth itself rather than blasting away the surface layer. That "
          "extends the interval before the next clean."),
-        WEATHER_Q, AIRSPACE_Q,
+        ("Can you clean the roof while the site is operating?",
+         "Usually, yes. Nobody goes onto the roof, so there is no roof entry permit, no height safety "
+         "mobilisation and generally no production pause. Flight paths and the ground exclusion zone are "
+         "agreed with your site team so loading docks and forklift routes keep moving."),
+        ("Do you need approval to fly over our site?",
+         "Sometimes. Some sites sit within controlled airspace or near a hospital helipad, and some border busy "
+         "roads or neighbouring properties that need their own controls. We assess all of this at scoping and "
+         "arrange any authorisation before works are booked."),
     ],
     cta_h2="Send us your roof",
+    cta_p="Send the address and a roof plan if you have one. Roof areas are measured from aerial imagery, so "
+          "most roofs are priced without anyone climbing up to look.",
+    more=f"Permits, SWMS and insurance are covered on our {COMP}, and the {PROC} walks through each step "
+         "from scoping to the completion report.",
+    suburbs_h3="Industrial and commercial areas we service",
+    suburbs=["Yatala", "Stapylton", "Ormeau", "Coomera", "Arundel", "Molendinar", "Ashmore", "Carrara",
+             "Nerang", "Bundall", "Robina", "Varsity Lakes", "Burleigh Heads", "Currumbin Waters", "Tugun",
+             "Southport"],
+    also=f"Warehouse and commercial roofs across {BNE}, the Scenic Rim and Northern New South Wales are "
+         "covered too, with the Sunshine Coast by arrangement.",
 )
 
 PAGES["drone-solar-panel-cleaning-gold-coast.html"] = dict(
@@ -538,9 +578,26 @@ PAGES["drone-solar-panel-cleaning-gold-coast.html"] = dict(
         ("Can you clean ground-mount and carport arrays?",
          "Yes. The method applies to commercial rooftop installations, ground-mount arrays and carport "
          "structures."),
-        WEATHER_Q, AIRSPACE_Q,
+        ("When is the best time of day to clean panels?",
+         "Early morning or late afternoon, when the modules are cooler. Water on hot glass in the middle of the "
+         "day dries too quickly to rinse cleanly, so cleans are scheduled outside peak heat where the site "
+         "allows."),
+        ("How do we know the clean made a difference?",
+         "Your monitoring data is the best measure, so compare generation before and after. The completion "
+         "report includes before and after photographs of the array, and the next clean can be timed for when "
+         "output starts to drop again."),
     ],
     cta_h2="Send us your array",
+    cta_p="Send the address, the array size and recent generation data if you have it. Most arrays are "
+          "scoped from aerial imagery without a site visit.",
+    more=f"The {PROC} covers scoping and reporting step by step, and the {COMP} lists the insurance and "
+         "safety documents supplied before works.",
+    suburbs_h3="Where we clean arrays on the Gold Coast",
+    suburbs=["Pimpama", "Ormeau", "Yatala", "Stapylton", "Coomera", "Upper Coomera", "Oxenford",
+             "Helensvale", "Parkwood", "Molendinar", "Nerang", "Carrara", "Robina", "Mudgeeraba",
+             "Varsity Lakes", "Currumbin Waters"],
+    also=f"Commercial arrays across {BNE}, the Scenic Rim and Northern New South Wales are covered too, "
+         "with the Sunshine Coast by arrangement.",
 )
 
 PAGES["drone-strata-building-cleaning-gold-coast.html"] = dict(
@@ -590,12 +647,12 @@ PAGES["drone-strata-building-cleaning-gold-coast.html"] = dict(
     compare=(("Scaffold, swing stage or rope access", [
                  "Balconies blocked and privacy lost for weeks",
                  "Pool decks, driveways or car parks fenced off",
-                 "Roof anchor inspection and certification",
+                 "Anchor inspection and certification before any drop",
                  "Access hire as the largest cost line"]),
              ("Drone delivery", [
                  GROUND_CREW,
-                 "Days on site, not weeks",
-                 "A small exclusion zone that moves with the work",
+                 "Elevations finished in days, not weeks",
+                 "A ground exclusion zone that moves around the building",
                  "Budget spent on cleaning, not access"])),
     local_h2="Strata buildings on the Gold Coast",
     local=[
@@ -617,9 +674,25 @@ PAGES["drone-strata-building-cleaning-gold-coast.html"] = dict(
          "A fixed-scope proposal before approval. Then a site-specific SWMS, risk assessment, insurance "
          "certificates of currency and Safety Data Sheets before works, and a photographic completion report "
          "per elevation afterwards."),
-        OCCUPIED_Q, AIRSPACE_Q,
+        ("Will the drone fly close to balconies?",
+         "Yes, it works close to the facade, which is why notice goes out before each elevation. Residents on "
+         "that side close doors and windows and bring in washing from their balconies. Nothing else is needed."),
+        ("Is drone cleaning cheaper than rope access for a strata building?",
+         "Often, because access is usually the largest cost in an exterior clean. Without scaffold, swing stage "
+         "or anchor certification, more of the budget goes on the cleaning itself. The saving depends on "
+         "height, layout and airspace, so every building is priced individually."),
     ],
     cta_h2="Send us your building",
+    cta_p="Send the building name or address and the committee's timing, and we will return a fixed-scope "
+          "proposal you can table at the next meeting.",
+    more=f"Committees often ask for documentation first. It is outlined on our {COMP}, and the {PROC} "
+         "shows how an engagement runs from scope to report.",
+    suburbs_h3="Strata areas we service",
+    suburbs=["Surfers Paradise", "Broadbeach", "Broadbeach Waters", "Main Beach", "Mermaid Beach",
+             "Mermaid Waters", "Southport", "Labrador", "Biggera Waters", "Runaway Bay", "Hope Island",
+             "Paradise Point", "Benowa", "Robina", "Burleigh Heads", "Palm Beach"],
+    also=f"We also work with strata managers and committees across {BNE} and Northern New South Wales, "
+         "with the Sunshine Coast by arrangement.",
 )
 
 PAGES["drone-cleaning-brisbane.html"] = dict(
@@ -630,7 +703,7 @@ PAGES["drone-cleaning-brisbane.html"] = dict(
     eyebrow="Brisbane &middot; Logan &middot; Ipswich",
     h1="Commercial drone cleaning in Brisbane",
     intro="Facade, roof, window and solar cleaning by drone for commercial, strata and government property "
-          "across Brisbane, Logan and Ipswich. No scaffold, no EWP and nobody working at height.",
+          "across Brisbane, Logan and Ipswich, delivered from the ground without scaffold, EWP or rope access.",
     area_served=[{"@type": "City", "name": "Brisbane"}, {"@type": "City", "name": "Logan"},
                  {"@type": "City", "name": "Ipswich"}],
     s1=dict(
@@ -648,18 +721,19 @@ PAGES["drone-cleaning-brisbane.html"] = dict(
         img=dict(src="images/glasstower.jpg", alt="Drone soft washing the glazed elevation of a high-rise tower",
                  w=800, h=486),
     ),
-    compare_h2="Drone cleaning compared with conventional access",
-    compare_intro="On most buildings, getting to the surface costs more than cleaning it.",
+    compare_h2="Drone cleaning compared with access equipment in Brisbane",
+    compare_intro="In the CBD and inner suburbs, access equipment brings road occupancy permits, traffic "
+                  "control and long programs. On industrial estates it means roof entry and height safety.",
     compare=(("Scaffold, EWP or rope access", [
-                 "Access equipment hire, delivery and erection",
-                 "Road occupancy or footpath closure permits",
-                 "Personnel working at height under fall-arrest",
-                 "Weeks on site for a mid-rise building"]),
+                 "Road occupancy permits and traffic control",
+                 "Equipment hire, delivery and erection",
+                 "Crew at height under fall-arrest",
+                 "Roof entry permits on industrial sites"]),
              ("Drone delivery", [
                  GROUND_CREW,
-                 "A small exclusion zone that moves with the work",
-                 "Days on site, not weeks",
-                 "Every elevation photo-documented"])),
+                 "Ground exclusion zone that follows the work",
+                 "Programs measured in days",
+                 "Photos of every elevation in the completion report"])),
     local_h2="Working across Brisbane",
     local=[
         "Brisbane's warm, humid summers suit the mould, algae and lichen that stain facades and roofs, and "
@@ -686,8 +760,18 @@ PAGES["drone-cleaning-brisbane.html"] = dict(
         ("Do you need to visit the site to quote?",
          "Usually not. Most sites can be scoped and priced from aerial imagery and drawings, without an "
          "attendance fee or a sales visit."),
-        OCCUPIED_Q, DOCS_Q,
+        ("Can you clean industrial roofs on Brisbane's southside?",
+         "Yes. Warehouse and manufacturing roofs in areas such as Rocklea, Acacia Ridge and Eight Mile Plains "
+         "are cleaned from the ground, with no roof entry and usually no production pause."),
+        ("Is the process the same as on the Gold Coast?",
+         "Yes. The method and documentation are identical: a fixed-scope proposal, then a site-specific SWMS "
+         "and certificates of currency before works, and a photographic completion report per elevation "
+         "afterwards."),
     ],
+    cta_p="Tell us the address and what needs cleaning. We will come back with a fixed-scope proposal, "
+          "usually without needing to visit.",
+    more=f"The method is the same everywhere we work. Our {PROC} sets out each step, and our {COMP} covers "
+         "insurance and safety documentation.",
     related_h2="Our drone cleaning services",
     cta_h2="Send us your Brisbane site",
 )
