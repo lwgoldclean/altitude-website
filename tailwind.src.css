@@ -223,6 +223,27 @@ textarea.quote-input { resize: vertical; min-height: 4.5rem; }
   color: #fff;
 }
 
+/* ---- Guide articles (guide-*.html) -----------------------
+   Long-form copy is written as plain h2/h3/p/ul/table inside
+   <div class="guide">, so the generator doesn't need classes
+   on every element.
+   ---------------------------------------------------------- */
+.guide > h2 { @apply font-heading font-semibold text-2xl lg:text-[1.75rem] text-navy tracking-tight mt-14 leading-snug; }
+.guide > h2:first-child { margin-top: 0; }
+.guide > h3 { @apply font-heading font-semibold text-lg text-navy mt-8; }
+.guide > p { @apply mt-4 text-lg max-sm:text-[16.5px] leading-relaxed; }
+.guide > h3 + p { @apply mt-2; }
+.guide > ul { @apply mt-5 space-y-2.5 text-[16px]; }
+.guide > ul > li { @apply relative pl-6 leading-relaxed; }
+.guide > ul > li::before { content: "\2014"; @apply absolute left-0 text-accent font-semibold; }
+.guide a { @apply text-accent font-semibold hover:underline; }
+.guide .table-wrap { @apply mt-6 overflow-x-auto border border-line; }
+.guide table { @apply w-full text-[15px] text-left; min-width: 640px; border-collapse: collapse; }
+.guide th, .guide td { @apply px-4 py-3 align-top border-b border-line; }
+.guide thead th { @apply bg-mist font-heading font-semibold text-navy; }
+.guide tbody th { @apply font-heading font-semibold text-navy; }
+.guide tbody tr:last-child > * { border-bottom: 0; }
+
 /* ---- Capability statement print styles -------------------
    The statement page is written to be printed or saved to PDF
    and attached to a tender response.
