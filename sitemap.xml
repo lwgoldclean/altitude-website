@@ -2,44 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://altitudedroneexteriorcleaning.com/</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-03</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://altitudedroneexteriorcleaning.com/services.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://altitudedroneexteriorcleaning.com/drone-building-washing-gold-coast.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://altitudedroneexteriorcleaning.com/drone-window-cleaning-gold-coast.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://altitudedroneexteriorcleaning.com/drone-roof-cleaning-gold-coast.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://altitudedroneexteriorcleaning.com/drone-solar-panel-cleaning-gold-coast.html</loc>
+    <lastmod>2026-10-03</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://altitudedroneexteriorcleaning.com/compliance.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://altitudedroneexteriorcleaning.com/contact.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://altitudedroneexteriorcleaning.com/how-it-works.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-03</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://altitudedroneexteriorcleaning.com/capability-statement.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://altitudedroneexteriorcleaning.com/about.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
