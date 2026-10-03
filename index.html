@@ -59,9 +59,9 @@
   <script>document.documentElement.className += ' js';</script>
 
   <!-- Structured data: helps search engines present the business correctly.
-       TODO (William): once confirmed, add your ABN as an "identifier", and add
-       "sameAs" URLs for any Google Business Profile, LinkedIn or Facebook page —
-       those are among the strongest local-search signals available to you. -->
+       TODO (William): add "sameAs" URLs for any Google Business Profile, LinkedIn
+       or Facebook page — those are among the strongest local-search signals
+       available to you. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,6 +69,12 @@
     "@id": "https://altitudedroneexteriorcleaning.com/#business",
     "name": "Altitude Drone Exterior Cleaning",
     "alternateName": "Altitude Drone Services",
+    "taxID": "56978993504",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "ABN",
+      "value": "56 978 993 504"
+    },
     "description": "Specialist drone services contractor delivering exterior building maintenance without work at height for government, commercial and strata clients across South East Queensland.",
     "url": "https://altitudedroneexteriorcleaning.com/",
     "logo": "https://altitudedroneexteriorcleaning.com/images/logo.svg",
@@ -719,8 +725,6 @@
         Specialist drone services contractor delivering exterior building maintenance without
         work at height, across South East Queensland.
       </p>
-      <!-- TODO (William): add your ABN here once confirmed — government buyers look for it.
-           e.g. <p class="mt-4 text-white/45">ABN 00 000 000 000</p> -->
     </div>
     <div>
       <h3 class="font-heading font-semibold text-white mb-4 text-[15px]">Navigate</h3>
@@ -765,7 +769,7 @@
   </div>
   <div class="border-t border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-wrap justify-between gap-3 text-[12.5px] text-white/60">
-      <span>© 2026 Altitude Drone Exterior Cleaning</span>
+      <span>© 2026 Altitude Drone Exterior Cleaning &middot; ABN 56 978 993 504</span>
       <span>CASA-certified operations &middot; Fully insured &middot; Gold Coast, QLD</span>
     </div>
   </div>
