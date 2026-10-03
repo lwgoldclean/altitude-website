@@ -16,6 +16,7 @@
   <meta property="og:image" content="https://altitudedroneexteriorcleaning.com/images/og-card.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Altitude Drone Exterior Cleaning: commercial drone cleaning on the Gold Coast">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Drone Facade, Roof, Window & Solar Cleaning | Altitude">
   <meta name="twitter:description" content="Drone-delivered facade, roof, curtain wall, solar and industrial roof cleaning for commercial and government property in South East Queensland.">
@@ -25,17 +26,29 @@
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-23DYS03TT7"></script>
+  <link rel="preload" href="/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Google tag (gtag.js). The pageview is queued straight away, but the
+       library itself is fetched on the visitor's first interaction (or 3.5s
+       after load) so it never competes with the page's first paint. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-23DYS03TT7');
+    (function () {
+      var loaded = false, events = ['scroll', 'pointerdown', 'keydown', 'touchstart'];
+      function loadTag() {
+        if (loaded) return; loaded = true;
+        events.forEach(function (e) { window.removeEventListener(e, loadTag); });
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-23DYS03TT7';
+        document.head.appendChild(s);
+      }
+      events.forEach(function (e) { window.addEventListener(e, loadTag, { once: true, passive: true }); });
+      window.addEventListener('load', function () { setTimeout(loadTag, 3500); });
+    })();
   </script>
 
   <link rel="stylesheet" href="css/site.css">
@@ -302,8 +315,8 @@
 
     <!-- Roof -->
     <article id="roof" class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center scroll-mt-32">
-      <div class="img-ph border border-line min-h-[300px] lg:min-h-[360px] flex items-center justify-center order-last lg:order-first">
-        <p class="text-navy/40 font-medium text-sm px-6 text-center">Photograph: roof before and after treatment</p>
+      <div class="border border-line bg-mist p-4 order-last lg:order-first">
+        <img src="images/drone.jpg" alt="Altitude's six-rotor spray drone used for roof soft washing" class="w-full h-auto" width="1000" height="1000" loading="lazy" decoding="async">
       </div>
       <div>
         <p class="text-accent text-[13px] font-semibold tracking-[0.14em] uppercase mb-3">02 — Roof &amp; gutter</p>
@@ -396,8 +409,15 @@
           <li class="flex gap-3"><span class="text-accent font-semibold">—</span> Multi-building estates handled under one program</li>
         </ul>
       </div>
-      <div class="img-ph border border-line min-h-[300px] lg:min-h-[360px] flex items-center justify-center">
-        <p class="text-navy/40 font-medium text-sm px-6 text-center">Photograph: industrial roof, aerial view</p>
+      <div class="border border-line bg-mist p-6 sm:p-8">
+        <h3 class="font-heading font-semibold text-navy">Typical industrial sites</h3>
+        <ul class="mt-4 space-y-2.5 text-[15px]">
+          <li class="flex gap-3"><span class="text-accent font-semibold">—</span> Distribution centres and logistics hubs</li>
+          <li class="flex gap-3"><span class="text-accent font-semibold">—</span> Manufacturing and processing facilities</li>
+          <li class="flex gap-3"><span class="text-accent font-semibold">—</span> Warehouse estates and business parks</li>
+        </ul>
+        <h3 class="mt-8 font-heading font-semibold text-navy">Gold Coast industrial areas we service</h3>
+        <p class="mt-3 text-[15px] leading-relaxed">Yatala, Stapylton, Coomera, Molendinar, Arundel, Carrara, West Burleigh and Currumbin Waters, plus industrial estates across Brisbane, Logan and Ipswich.</p>
       </div>
     </article>
 
@@ -490,7 +510,7 @@
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer class="bg-ink text-white/60">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-[14px]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid sm:grid-cols-2 lg:grid-cols-5 gap-10 text-[14px]">
     <div class="sm:col-span-2 lg:col-span-1">
       <p class="font-heading font-semibold text-lg text-white tracking-wide">ALTITUDE</p>
       <p class="text-sky text-[11px] font-semibold tracking-[0.22em] mt-1">DRONE EXTERIOR CLEANING</p>
@@ -511,10 +531,20 @@
       </ul>
     </div>
     <div>
+      <h3 class="font-heading font-semibold text-white mb-4 text-[15px]">Services</h3>
+      <ul class="space-y-2">
+        <li><a href="drone-building-washing-gold-coast.html" class="hover:text-sky transition-colors">Building washing</a></li>
+        <li><a href="drone-window-cleaning-gold-coast.html" class="hover:text-sky transition-colors">Window cleaning</a></li>
+        <li><a href="drone-roof-cleaning-gold-coast.html" class="hover:text-sky transition-colors">Roof cleaning</a></li>
+        <li><a href="drone-solar-panel-cleaning-gold-coast.html" class="hover:text-sky transition-colors">Solar panel cleaning</a></li>
+        <li><a href="drone-strata-building-cleaning-gold-coast.html" class="hover:text-sky transition-colors">Strata &amp; body corporate</a></li>
+      </ul>
+    </div>
+    <div>
       <h3 class="font-heading font-semibold text-white mb-4 text-[15px]">Coverage</h3>
       <ul class="space-y-2">
         <li>Gold Coast</li>
-        <li>Brisbane &amp; Logan</li>
+        <li><a href="drone-cleaning-brisbane.html" class="hover:text-sky transition-colors">Brisbane &amp; Logan</a></li>
         <li>Ipswich &amp; Scenic Rim</li>
         <li>Northern New South Wales</li>
         <li>Sunshine Coast (by arrangement)</li>
@@ -531,7 +561,7 @@
     </div>
   </div>
   <div class="border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-wrap justify-between gap-3 text-[12.5px] text-white/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-wrap justify-between gap-3 text-[12.5px] text-white/60">
       <span>© 2026 Altitude Drone Exterior Cleaning</span>
       <span>CASA-certified operations &middot; Fully insured &middot; Gold Coast, QLD</span>
     </div>

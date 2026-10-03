@@ -16,6 +16,7 @@
   <meta property="og:image" content="https://altitudedroneexteriorcleaning.com/images/og-card.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Altitude Drone Exterior Cleaning: commercial drone cleaning on the Gold Coast">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Commercial Drone Cleaning Gold Coast & Brisbane | Altitude">
   <meta name="twitter:description" content="Drone facade, roof, window and solar cleaning for commercial, strata and government property across the Gold Coast, Brisbane and SEQ. No scaffold or EWP.">
@@ -25,17 +26,29 @@
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-23DYS03TT7"></script>
+  <link rel="preload" href="/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Google tag (gtag.js). The pageview is queued straight away, but the
+       library itself is fetched on the visitor's first interaction (or 3.5s
+       after load) so it never competes with the page's first paint. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-23DYS03TT7');
+    (function () {
+      var loaded = false, events = ['scroll', 'pointerdown', 'keydown', 'touchstart'];
+      function loadTag() {
+        if (loaded) return; loaded = true;
+        events.forEach(function (e) { window.removeEventListener(e, loadTag); });
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-23DYS03TT7';
+        document.head.appendChild(s);
+      }
+      events.forEach(function (e) { window.addEventListener(e, loadTag, { once: true, passive: true }); });
+      window.addEventListener('load', function () { setTimeout(loadTag, 3500); });
+    })();
   </script>
 
   <link rel="stylesheet" href="css/site.css">
@@ -189,7 +202,7 @@
 <!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero-bg relative pt-24 pb-10 sm:pt-28 sm:pb-16 lg:pt-44 lg:pb-24 text-white overflow-hidden">
   <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.jpg" aria-hidden="true">
-    <source src="videos/hero.mp4" type="video/mp4">
+    <source data-src="videos/hero.mp4" type="video/mp4">
   </video>
   <div class="hero-video-overlay"></div>
 
@@ -351,7 +364,7 @@
 
         <p data-form-status class="hidden text-sm text-center r-md px-4 py-3" role="status" aria-live="polite"></p>
 
-        <p class="text-[12px] text-steel/80 text-center leading-relaxed">
+        <p class="text-[12px] text-steel text-center leading-relaxed">
           Details used solely to prepare your proposal. Direct line:
           <a href="tel:+61432008830" class="text-accent font-semibold hover:underline">0432 008 830</a>
         </p>
@@ -494,7 +507,7 @@
     <div class="max-w-3xl mb-8 sm:mb-12">
       <p class="text-accent text-[13px] font-semibold tracking-[0.14em] uppercase mb-4">Capability</p>
       <h2 class="font-heading font-semibold max-sm:text-[1.6rem] text-3xl lg:text-[2.5rem] leading-tight text-navy tracking-tight">
-        Scopes we deliver
+        Drone cleaning services for commercial property
       </h2>
       <p class="max-sm:mt-4 max-sm:text-[16.5px] mt-5 text-lg leading-relaxed">
         Single assets through to multi-site portfolios, delivered as one-off works or under a
@@ -624,12 +637,16 @@
       </ul>
     </div>
 
-    <!-- IMAGE PLACEHOLDER: sample completion report / aerial condition capture -->
-    <div class="border border-white/15 min-h-[190px] sm:min-h-[340px] lg:min-h-[420px] flex items-center justify-center bg-white/5">
-      <div class="text-center text-white/40 px-8">
-        <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h4M8 4h8a2 2 0 012 2v14a2 2 0 01-2 2H8a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
-        <p class="text-sm font-medium">Sample completion report — replace with a real de-identified page</p>
-      </div>
+    <!-- What the completion report contains. Swap for a real de-identified report page once one exists. -->
+    <div class="border border-white/15 bg-white/5 p-6 sm:p-8">
+      <p class="text-sky text-[13px] font-semibold tracking-[0.14em] uppercase">Completion report</p>
+      <p class="mt-2 font-heading font-semibold text-xl text-white">One document per site, issued at handover</p>
+      <ol class="mt-6 divide-y divide-white/10 border-y border-white/10 text-[15px]">
+        <li class="flex gap-4 py-3.5"><span class="font-heading font-semibold text-sky w-6 shrink-0">01</span><span class="text-white/80">Site, scope and dates of works</span></li>
+        <li class="flex gap-4 py-3.5"><span class="font-heading font-semibold text-sky w-6 shrink-0">02</span><span class="text-white/80">Before and after photographs of every treated elevation</span></li>
+        <li class="flex gap-4 py-3.5"><span class="font-heading font-semibold text-sky w-6 shrink-0">03</span><span class="text-white/80">Condition observations: flashing, seals, corrosion and vegetation</span></li>
+        <li class="flex gap-4 py-3.5"><span class="font-heading font-semibold text-sky w-6 shrink-0">04</span><span class="text-white/80">SWMS and risk assessment reference</span></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -694,7 +711,7 @@
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer class="bg-ink text-white/60">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-[14px]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid sm:grid-cols-2 lg:grid-cols-5 gap-10 text-[14px]">
     <div class="sm:col-span-2 lg:col-span-1">
       <p class="font-heading font-semibold text-lg text-white tracking-wide">ALTITUDE</p>
       <p class="text-sky text-[11px] font-semibold tracking-[0.22em] mt-1">DRONE EXTERIOR CLEANING</p>
@@ -717,10 +734,20 @@
       </ul>
     </div>
     <div>
+      <h3 class="font-heading font-semibold text-white mb-4 text-[15px]">Services</h3>
+      <ul class="space-y-2">
+        <li><a href="drone-building-washing-gold-coast.html" class="hover:text-sky transition-colors">Building washing</a></li>
+        <li><a href="drone-window-cleaning-gold-coast.html" class="hover:text-sky transition-colors">Window cleaning</a></li>
+        <li><a href="drone-roof-cleaning-gold-coast.html" class="hover:text-sky transition-colors">Roof cleaning</a></li>
+        <li><a href="drone-solar-panel-cleaning-gold-coast.html" class="hover:text-sky transition-colors">Solar panel cleaning</a></li>
+        <li><a href="drone-strata-building-cleaning-gold-coast.html" class="hover:text-sky transition-colors">Strata &amp; body corporate</a></li>
+      </ul>
+    </div>
+    <div>
       <h3 class="font-heading font-semibold text-white mb-4 text-[15px]">Coverage</h3>
       <ul class="space-y-2">
         <li>Gold Coast</li>
-        <li>Brisbane &amp; Logan</li>
+        <li><a href="drone-cleaning-brisbane.html" class="hover:text-sky transition-colors">Brisbane &amp; Logan</a></li>
         <li>Ipswich &amp; Scenic Rim</li>
         <li>Northern New South Wales</li>
         <li>Sunshine Coast (by arrangement)</li>
@@ -737,7 +764,7 @@
     </div>
   </div>
   <div class="border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-wrap justify-between gap-3 text-[12.5px] text-white/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-wrap justify-between gap-3 text-[12.5px] text-white/60">
       <span>© 2026 Altitude Drone Exterior Cleaning</span>
       <span>CASA-certified operations &middot; Fully insured &middot; Gold Coast, QLD</span>
     </div>

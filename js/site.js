@@ -103,17 +103,36 @@ function initHeroVideo() {
   var video = document.querySelector('.hero-video');
   if (!video) return;
 
+  // Reduced-motion visitors never see the footage (CSS hides it), so don't
+  // spend their data downloading it.
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   // iOS honours the muted *property*; the attribute alone is not always
   // enough for an unattended play() to be permitted.
   video.muted = true;
   video.setAttribute('muted', '');
 
-  var started = video.play();
-  if (!started || typeof started.catch !== 'function') return;   // older browsers
+  // The footage is only fetched once the page has finished loading, so it
+  // never competes with the headline, fonts and stylesheet for bandwidth.
+  // The poster frame covers the hero until then.
+  function start() {
+    var source = video.querySelector('source[data-src]');
+    if (source) {
+      source.src = source.getAttribute('data-src');
+      source.removeAttribute('data-src');
+      video.load();
+    }
 
-  started.catch(function () {
-    video.parentNode && video.parentNode.removeChild(video);
-  });
+    var started = video.play();
+    if (!started || typeof started.catch !== 'function') return;   // older browsers
+
+    started.catch(function () {
+      video.parentNode && video.parentNode.removeChild(video);
+    });
+  }
+
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start);
 }
 
 /* The enquiry form is collapsed on phones only. The markup ships with `open`
