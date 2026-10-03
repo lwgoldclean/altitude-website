@@ -346,8 +346,7 @@ PAGES["drone-building-washing-gold-coast.html"] = dict(
 
 PAGES["drone-window-cleaning-gold-coast.html"] = dict(
     title="Drone Window Cleaning Gold Coast | High-Rise Glass | Altitude",
-    desc="High-rise and commercial window cleaning by drone across the Gold Coast. Purified-water curtain wall "
-         "cleaning without swing stage, rope access or anchor certification.",
+    desc="High-rise and commercial window cleaning by drone across the Gold Coast. Purified-water curtain wall cleaning with no swing stage or rope access.",
     crumb="Window Cleaning Gold Coast",
     service_name="Drone window and curtain wall cleaning",
     eyebrow="Gold Coast &middot; Windows &amp; curtain wall",
@@ -408,8 +407,8 @@ PAGES["drone-window-cleaning-gold-coast.html"] = dict(
 
 PAGES["drone-roof-cleaning-gold-coast.html"] = dict(
     title="Drone Roof Cleaning Gold Coast | Commercial & Strata | Altitude",
-    desc="Commercial, strata and industrial roof cleaning by drone across the Gold Coast. Tile, metal and "
-         "membrane roofs soft washed with no foot traffic and no fall risk.",
+    desc="Commercial, strata and industrial roof cleaning by drone on the Gold Coast. Tile, metal and "
+         "membrane roofs soft washed with no foot traffic or fall risk.",
     crumb="Roof Cleaning Gold Coast",
     service_name="Drone roof cleaning",
     eyebrow="Gold Coast &middot; Roofs",
@@ -483,8 +482,7 @@ PAGES["drone-roof-cleaning-gold-coast.html"] = dict(
 
 PAGES["drone-solar-panel-cleaning-gold-coast.html"] = dict(
     title="Solar Panel Cleaning Gold Coast | Commercial Drone | Altitude",
-    desc="Commercial solar panel cleaning by drone across the Gold Coast. Purified water, no module loading "
-         "and no technicians on the roof. Rooftop, ground-mount and carport arrays.",
+    desc="Commercial solar panel cleaning by drone on the Gold Coast. Purified water, no module loading, nobody on the roof. Rooftop, ground and carport arrays.",
     crumb="Solar Panel Cleaning Gold Coast",
     service_name="Commercial solar panel cleaning",
     eyebrow="Gold Coast &middot; Solar arrays",
@@ -547,8 +545,7 @@ PAGES["drone-solar-panel-cleaning-gold-coast.html"] = dict(
 
 PAGES["drone-strata-building-cleaning-gold-coast.html"] = dict(
     title="Strata &amp; Body Corporate Building Cleaning Gold Coast | Altitude",
-    desc="Drone building washing and window cleaning for Gold Coast strata and body corporate buildings. "
-         "Residents stay put, no scaffold, fixed pricing and full documentation for the committee.",
+    desc="Drone building and window cleaning for Gold Coast strata and body corporate. No scaffold, residents stay put, fixed pricing and committee-ready documents.",
     crumb="Strata &amp; Body Corporate",
     service_name="Strata and body corporate building cleaning",
     eyebrow="Gold Coast &middot; Strata &amp; body corporate",
@@ -627,8 +624,7 @@ PAGES["drone-strata-building-cleaning-gold-coast.html"] = dict(
 
 PAGES["drone-cleaning-brisbane.html"] = dict(
     title="Drone Cleaning Brisbane | Facade, Window &amp; Roof | Altitude",
-    desc="Commercial drone cleaning across Brisbane, Logan and Ipswich. Facade washing, window, roof and "
-         "solar cleaning for commercial, strata and government property. No scaffold or EWP.",
+    desc="Commercial drone cleaning across Brisbane, Logan and Ipswich. Facade, window, roof and solar cleaning for commercial, strata and government property.",
     crumb="Drone Cleaning Brisbane",
     service_name="Commercial drone cleaning",
     eyebrow="Brisbane &middot; Logan &middot; Ipswich",
